@@ -1,0 +1,154 @@
+/* Linkr 要件定義書 共通スタイル */
+
+:root {
+  --c-text: #1a1a1a;
+  --c-muted: #5a5a5a;
+  --c-bg: #fafafa;
+  --c-surface: #ffffff;
+  --c-border: #e1e4e8;
+  --c-accent: #0366d6;
+  --c-warn: #d97706;
+  --c-success: #1a7f37;
+  --c-danger: #cf222e;
+  --c-tech: #6f42c1;
+  --c-security: #cf222e;
+  --c-nfr: #0e8a96;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-mono: "SF Mono", Menlo, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--c-text);
+  background: var(--c-bg);
+  line-height: 1.7;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1, h2, h3, h4 { color: var(--c-text); margin-top: 1.8em; }
+h1 { font-size: 1.9rem; border-bottom: 2px solid var(--c-border); padding-bottom: 0.3em; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid var(--c-border); padding-bottom: 0.2em; }
+h3 { font-size: 1.2rem; }
+h4 { font-size: 1.05rem; color: var(--c-muted); }
+
+p, li { margin: 0.4em 0; }
+ul, ol { padding-left: 1.4em; }
+
+code {
+  font-family: var(--font-mono);
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  padding: 1em;
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  background: var(--c-surface);
+}
+th, td {
+  border: 1px solid var(--c-border);
+  padding: 0.6em 0.8em;
+  text-align: left;
+  vertical-align: top;
+}
+th { background: var(--c-bg); font-weight: 600; }
+
+dl { margin: 1em 0; }
+dt { font-weight: 600; margin-top: 0.6em; }
+dd { margin: 0.2em 0 0.6em 1.4em; color: var(--c-muted); }
+
+details {
+  border: 1px solid var(--c-border);
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  margin: 0.6em 0;
+  background: var(--c-surface);
+}
+summary { cursor: pointer; font-weight: 600; }
+
+section {
+  margin-bottom: 1.5rem;
+}
+
+aside {
+  border-left: 4px solid var(--c-accent);
+  padding: 0.6em 1em;
+  margin: 1em 0;
+  background: var(--c-surface);
+  border-radius: 0 6px 6px 0;
+}
+
+figure {
+  margin: 1.2em 0;
+  text-align: center;
+}
+figcaption {
+  font-size: 0.9em;
+  color: var(--c-muted);
+  margin-top: 0.4em;
+}
+
+/* バッジ (data-category 属性で着色) */
+.badge {
+  display: inline-block;
+  padding: 0.1em 0.6em;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 600;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  color: var(--c-muted);
+}
+.badge[data-category="security"] { background: #ffe4e8; color: var(--c-danger); border-color: var(--c-danger); }
+.badge[data-category="tech"]     { background: #f0e7ff; color: var(--c-tech);     border-color: var(--c-tech); }
+.badge[data-category="nfr"]      { background: #e1f5f7; color: var(--c-nfr);      border-color: var(--c-nfr); }
+.badge[data-category="warning"]  { background: #fff4e2; color: var(--c-warn);     border-color: var(--c-warn); }
+
+/* SVG 図 */
+.diagram {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  padding: 1em;
+  margin: 1em 0;
+}
+.diagram svg { max-width: 100%; height: auto; }
+
+/* 役割・プラン比較カード */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+  margin: 1em 0;
+}
+.card {
+  border: 1px solid var(--c-border);
+  border-radius: 8px;
+  padding: 1em;
+  background: var(--c-surface);
+}
+.card h4 { margin-top: 0; }
+
+/* 要件項目 (data-req-id で識別) */
+[data-req-id] { scroll-margin-top: 1em; }
+
+/* レスポンシブ */
+@media (max-width: 640px) {
+  body { padding: 1rem 0.8rem; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+}

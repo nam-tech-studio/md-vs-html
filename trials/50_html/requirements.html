@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チャットツール「Linkr」要件定義書 (Core)</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>チャットツール「Linkr」要件定義書 (Core)</h1>
+    </header>
+
+    <section id="overview" aria-labelledby="overview-heading">
+      <h2 id="overview-heading">1. 概要</h2>
+      <p>社内コミュニケーション用のチャットツール。本書はコア機能のみを定義する。</p>
+    </section>
+
+    <section id="users-workspace" aria-labelledby="users-workspace-heading">
+      <h2 id="users-workspace-heading">2. ユーザーとワークスペース</h2>
+      <ul>
+        <li data-category="functional">ユーザーは1つのメールアドレスにつき1アカウントを保持する</li>
+        <li data-category="functional">各ユーザーは複数のワークスペースに所属できる</li>
+        <li data-category="functional">ワークスペースはチームの単位であり、URLサブドメインで識別される (例: <code>acme.linkr.app</code>)</li>
+        <li data-category="functional">ワークスペース内のユーザーは表示名とアバター画像を設定できる</li>
+      </ul>
+
+      <figure class="diagram" aria-label="ユーザー・ワークスペース・サブドメインの関係図">
+        <svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diag1-title">
+          <title id="diag1-title">ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される</title>
+          <rect x="20" y="70" width="120" height="60" rx="8" fill="#e8f0fe" stroke="#1a73e8"/>
+          <text x="80" y="105" text-anchor="middle" font-size="14">ユーザー</text>
+          <rect x="220" y="20" width="160" height="50" rx="8" fill="#fef7e0" stroke="#f9ab00"/>
+          <text x="300" y="50" text-anchor="middle" font-size="13">ワークスペースA</text>
+          <rect x="220" y="130" width="160" height="50" rx="8" fill="#fef7e0" stroke="#f9ab00"/>
+          <text x="300" y="160" text-anchor="middle" font-size="13">ワークスペースB</text>
+          <rect x="420" y="20" width="90" height="50" rx="8" fill="#e6f4ea" stroke="#188038"/>
+          <text x="465" y="50" text-anchor="middle" font-size="12">acme.linkr.app</text>
+          <rect x="420" y="130" width="90" height="50" rx="8" fill="#e6f4ea" stroke="#188038"/>
+          <text x="465" y="160" text-anchor="middle" font-size="12">サブドメイン</text>
+          <line x1="140" y1="90" x2="220" y2="45" stroke="#5f6368" stroke-width="1.5"/>
+          <line x1="140" y1="110" x2="220" y2="155" stroke="#5f6368" stroke-width="1.5"/>
+          <line x1="380" y1="45" x2="420" y2="45" stroke="#5f6368" stroke-width="1.5"/>
+          <line x1="380" y1="155" x2="420" y2="155" stroke="#5f6368" stroke-width="1.5"/>
+        </svg>
+        <figcaption>ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)</figcaption>
+      </figure>
+    </section>
+
+    <section id="channels" aria-labelledby="channels-heading">
+      <h2 id="channels-heading">3. チャネル</h2>
+      <ul>
+        <li data-category="functional">チャネルはワークスペース内のトピック単位の会話空間である</li>
+        <li data-category="functional">チャネルにはパブリックとプライベートの2種類がある</li>
+      </ul>
+
+      <h3>3.1 チャネル種別</h3>
+      <table>
+        <caption>チャネル種別と閲覧・参加範囲</caption>
+        <thead>
+          <tr><th scope="col">種別</th><th scope="col">閲覧・参加範囲</th></tr>
+        </thead>
+        <tbody>
+          <tr data-category="functional"><th scope="row">パブリック</th><td>ワークスペース全員が閲覧・参加可能</td></tr>
+          <tr data-category="functional"><th scope="row">プライベート</th><td>招待されたメンバーのみ閲覧可能</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 チャネル運用ルール</h3>
+      <ul>
+        <li data-category="functional">チャネル名は半角英数字とハイフンのみ、最大80文字</li>
+        <li data-category="functional">チャネル作成者は自動的にメンバーとなり、初期管理権限を持つ</li>
+        <li data-category="functional">ユーザーは任意のパブリックチャネルに自由参加できる</li>
+        <li data-category="functional">
+          ユーザーは自分が参加中のチャネルから退出できる
+          <ul>
+            <li data-category="warning">ただし最後の管理者は退出前に他メンバーに管理権限を委譲する必要がある</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section id="messages" aria-labelledby="messages-heading">
+      <h2 id="messages-heading">4. メッセージ</h2>
+      <ul>
+        <li data-category="functional">ユーザーはチャネル内にテキストメッセージを投稿できる</li>
+        <li data-category="functional">メッセージは最大4000文字</li>
+        <li data-category="functional">メッセージには投稿時刻と投稿者が記録される</li>
+        <li data-category="functional">メッセージは投稿後も時系列で永続表示される</li>
+        <li data-category="functional">メッセージ本文ではMarkdown記法 (太字、斜体、コードブロック、リンク) が利用可能</li>
+      </ul>
+    </section>
+
+    <section id="dm" aria-labelledby="dm-heading">
+      <h2 id="dm-heading">5. ダイレクトメッセージ (DM)</h2>
+      <ul>
+        <li data-category="functional">ユーザーは同一ワークスペース内の任意のユーザーにDMを送信できる</li>
+        <li data-category="functional">DMは1対1の会話のみをサポートする (グループDMは本書のスコープ外)</li>
+        <li data-category="functional">DM内のメッセージはチャネルメッセージと同じ仕様 (4000文字上限・Markdown対応)</li>
+        <li data-category="security">DMは送信者と受信者のみが閲覧でき、ワークスペース管理者であっても他人のDMは閲覧できない</li>
+      </ul>
+    </section>
+
+    <section id="nfr" aria-labelledby="nfr-heading">
+      <h2 id="nfr-heading">6. 非機能要件</h2>
+      <table>
+        <caption>非機能要件一覧</caption>
+        <thead>
+          <tr><th scope="col">項目</th><th scope="col">要件</th></tr>
+        </thead>
+        <tbody>
+          <tr data-category="nfr"><th scope="row">同時接続ユーザー数</th><td>1ワークスペースあたり最大500</td></tr>
+          <tr data-category="nfr"><th scope="row">メッセージ送信レイテンシ</th><td>送信から表示まで95%tileで500ms以内</td></tr>
+          <tr data-category="nfr"><th scope="row">データ永続性</th><td>メッセージは無期限保存 (削除ポリシーは別途定義)</td></tr>
+          <tr data-category="nfr"><th scope="row">対応ブラウザ</th><td>最新版のChrome / Safari / Firefox / Edge</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="tech-stack" aria-labelledby="tech-stack-heading">
+      <h2 id="tech-stack-heading">7. 技術スタック制約</h2>
+      <dl>
+        <dt data-category="tech">フロントエンド</dt>
+        <dd data-category="tech">TypeScript + React (バージョン18以上)</dd>
+
+        <dt data-category="tech">バックエンド</dt>
+        <dd data-category="tech">Go (1.22以上)、HTTPフレームワークはchi</dd>
+
+        <dt data-category="tech">データストア</dt>
+        <dd data-category="tech">PostgreSQL 16 (主データ) + Redis 7 (セッション・Pub/Sub)</dd>
+
+        <dt data-category="tech">リアルタイム通信</dt>
+        <dd data-category="tech">WebSocket (RFC 6455準拠)</dd>
+
+        <dt data-category="tech">インフラ</dt>
+        <dd data-category="tech">AWS東京リージョン (ap-northeast-1) で稼働、IaCはTerraformで管理</dd>
+      </dl>
+    </section>
+  </main>
+</body>
+</html>

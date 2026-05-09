@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>チャットツール「Linkr」要件定義書 (Enterprise)</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main>
+
+<header>
+  <h1>チャットツール「Linkr」要件定義書 (Enterprise)</h1>
+</header>
+
+<section id="overview" data-category="overview" aria-labelledby="h-overview">
+  <h2 id="h-overview">1. 概要</h2>
+  <p>社内コミュニケーション用のチャットツール。本書はコア機能、コミュニケーション支援機能、拡張機能、およびエンタープライズ向けの管理・統合・コンプライアンス機能を定義する。</p>
+</section>
+
+<section id="user-account" data-category="account" aria-labelledby="h-user-account">
+  <h2 id="h-user-account">2. ユーザーとアカウント</h2>
+  <ul>
+    <li>ユーザーは1つのメールアドレスにつき1アカウントを保持する</li>
+    <li>各ユーザーは複数のワークスペースに所属できる</li>
+    <li>ユーザーアカウントはパスワード認証またはSSO (後述) で認証される</li>
+    <li>パスワードは最低12文字、英大文字・小文字・数字・記号をそれぞれ1文字以上含む必要がある</li>
+    <li>パスワードのリセットは登録メールアドレスへのトークン送信で行われ、トークンの有効期限は60分である</li>
+    <li>アカウントは連続5回のログイン失敗で15分間ロックされる</li>
+    <li>ユーザーはオンライン / 退席中 / オフラインの3種類のプレゼンス状態を持つ</li>
+    <li>プレゼンスは10分間操作がない場合に自動的に「退席中」となる</li>
+    <li>ユーザーはステータスメッセージ (絵文字 + 最大100文字) を設定でき、有効期限 (1時間 / 4時間 / 終日 / カスタム / 無期限) を選択可能</li>
+    <li>ユーザーは2要素認証 (TOTP / SMS / WebAuthn) を有効化できる</li>
+    <li>2要素認証はワークスペースオーナーが組織全体に強制可能</li>
+  </ul>
+</section>
+
+<section id="workspace" data-category="workspace" aria-labelledby="h-workspace">
+  <h2 id="h-workspace">3. ワークスペース</h2>
+  <ul>
+    <li>ワークスペースはチームの単位であり、URLサブドメインで識別される (例: <code>acme.linkr.app</code>)</li>
+    <li>ワークスペース内のユーザーは表示名とアバター画像を設定できる</li>
+    <li>ワークスペース名・ロゴ・アイコンはオーナーが変更可能</li>
+    <li>ワークスペースには契約プランが紐付き、プランによって機能制限が異なる</li>
+    <li>ワークスペースは削除可能だが、削除実行から30日間は復元可能 (オーナーのみ可)</li>
+    <li>30日経過後はメッセージ・ファイル・設定すべてが完全消去される</li>
+  </ul>
+
+  <figure>
+    <figcaption>契約プラン比較</figcaption>
+    <table>
+      <thead>
+        <tr><th scope="col">プラン</th><th scope="col">主な制限・機能</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Free</strong></td><td>ユーザー50名まで、メッセージ履歴は直近10000件まで閲覧可能</td></tr>
+        <tr><td><strong>Pro</strong></td><td>ユーザー無制限、メッセージ履歴無制限</td></tr>
+        <tr><td><strong>Enterprise</strong></td><td>SSO、SCIM、データ常駐リージョン指定、エンタープライズキー管理、監査ログ拡張</td></tr>
+      </tbody>
+    </table>
+  </figure>
+</section>
+
+<section id="roles" data-category="roles" aria-labelledby="h-roles">
+  <h2 id="h-roles">4. ロールと権限</h2>
+  <p>ワークスペースには以下の3つのロールが存在する。</p>
+  <dl>
+    <dt>オーナー</dt>
+    <dd>ワークスペースの全権限。請求設定の変更、削除、他オーナーの任命が可能</dd>
+    <dt>管理者</dt>
+    <dd>ユーザー招待、チャネル管理、ロール付与 (オーナー以外) が可能</dd>
+    <dt>メンバー</dt>
+    <dd>通常利用権限のみ</dd>
+  </dl>
+  <ul>
+    <li>ロールはオーナーまたは管理者によって変更可能 (オーナーへの昇格はオーナーのみ可能)</li>
+    <li>ワークスペースには常に1名以上のオーナーが存在する必要がある</li>
+    <li>退会するオーナーは事前に他ユーザーへオーナー権限を委譲する必要がある</li>
+  </ul>
+
+  <h3>ゲストユーザー</h3>
+  <ul>
+    <li>特定チャネルにのみアクセス可能な制限ロール</li>
+    <li>ゲストはDM・検索・他チャネル閲覧不可</li>
+    <li>ゲストアカウントはオーナーまたは管理者のみが招待可能</li>
+  </ul>
+
+  <figure class="diagram" aria-label="ロール階層図">
+    <figcaption>ロール階層 (権限の包含関係)</figcaption>
+    <svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="role-diag-title">
+      <title id="role-diag-title">オーナー > 管理者 > メンバー、別ロールとしてゲスト</title>
+      <rect x="20" y="20" width="120" height="50" rx="6" fill="#fff" stroke="#0366d6"/>
+      <text x="80" y="50" text-anchor="middle" font-size="14">オーナー</text>
+      <rect x="180" y="20" width="120" height="50" rx="6" fill="#fff" stroke="#0366d6"/>
+      <text x="240" y="50" text-anchor="middle" font-size="14">管理者</text>
+      <rect x="340" y="20" width="120" height="50" rx="6" fill="#fff" stroke="#0366d6"/>
+      <text x="400" y="50" text-anchor="middle" font-size="14">メンバー</text>
+      <line x1="140" y1="45" x2="180" y2="45" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="300" y1="45" x2="340" y2="45" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="180" y="140" width="120" height="50" rx="6" fill="#fff" stroke="#d97706" stroke-dasharray="4 3"/>
+      <text x="240" y="170" text-anchor="middle" font-size="14">ゲスト</text>
+      <text x="240" y="120" text-anchor="middle" font-size="11" fill="#5a5a5a">特定チャネルのみ</text>
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5a5a5a"/>
+        </marker>
+      </defs>
+    </svg>
+  </figure>
+</section>
+
+<section id="invite" data-category="account" aria-labelledby="h-invite">
+  <h2 id="h-invite">5. 招待とユーザー管理</h2>
+  <ul>
+    <li>管理者およびオーナーはメールアドレス指定でユーザーを招待できる</li>
+    <li>招待リンクの有効期限は7日間</li>
+    <li>一度に最大100件のメールアドレスをまとめて招待可能</li>
+    <li>ドメイン制限: ワークスペースに参加可能なメールドメインを許可リストで制限可能</li>
+    <li>ユーザーはオーナーまたは管理者によって無効化または完全削除が可能</li>
+  </ul>
+  <dl>
+    <dt>無効化</dt>
+    <dd>ログイン不可だが過去のメッセージ・名前は残る</dd>
+    <dt>完全削除</dt>
+    <dd>投稿メッセージは「削除済みユーザー」として残るがアカウント情報は完全消去される</dd>
+  </dl>
+  <ul>
+    <li>SCIM v2.0 (System for Cross-domain Identity Management) によるユーザープロビジョニング (Enterpriseプランのみ)</li>
+  </ul>
+</section>
+
+<section id="sso" data-category="security" aria-labelledby="h-sso">
+  <h2 id="h-sso">6. SSO (シングルサインオン)</h2>
+  <ul>
+    <li>Enterpriseプランではワークスペース全体でSSOを有効化できる</li>
+    <li>対応プロトコル: SAML 2.0、OIDC (OpenID Connect)</li>
+    <li>SSO有効時はパスワード認証を無効化可能 (オーナー設定)</li>
+    <li>SSOプロバイダから受け取った属性 (名前、メール、ユーザーグループ) は自動的にLinkrアカウントに反映される</li>
+    <li>ジャストインタイムプロビジョニング (JIT): SSO初回ログイン時に自動的にアカウント作成可能</li>
+    <li>SCIMと併用時はユーザー作成・無効化はSCIM側を優先する</li>
+  </ul>
+</section>
+
+<section id="channel" data-category="channel" aria-labelledby="h-channel">
+  <h2 id="h-channel">7. チャネル</h2>
+  <ul>
+    <li>チャネルはワークスペース内のトピック単位の会話空間である</li>
+    <li>チャネル名は半角英数字とハイフンのみ、最大80文字</li>
+    <li>チャネル作成者は自動的にメンバーとなり、初期管理権限を持つ</li>
+    <li>ユーザーは任意のパブリックチャネルに自由参加できる</li>
+    <li>ユーザーは自分が参加中のチャネルから退出できる
+      <ul>
+        <li>ただし最後の管理者は退出前に他メンバーに管理権限を委譲する必要がある</li>
+      </ul>
+    </li>
+    <li>チャネルにはトピック (最大250文字) と説明 (最大1500文字) を設定できる</li>
+  </ul>
+
+  <h3>チャネル種別</h3>
+  <dl>
+    <dt>パブリック</dt>
+    <dd>ワークスペース全員が閲覧・参加可能</dd>
+    <dt>プライベート</dt>
+    <dd>招待されたメンバーのみ閲覧可能</dd>
+  </dl>
+
+  <h3>アーカイブ</h3>
+  <ul>
+    <li>チャネルはアーカイブできる</li>
+    <li>アーカイブ後は新規メッセージ投稿不可、ただし閲覧と検索は可能</li>
+    <li>アーカイブはチャネル管理者またはワークスペース管理者が実行可能</li>
+    <li>アーカイブされたチャネルはワークスペース管理者によって復元可能</li>
+  </ul>
+
+  <h3>共有チャネル (Connect)</h3>
+  <ul>
+    <li>他のワークスペースとチャネルを共有可能 (Enterpriseプラン)</li>
+    <li>共有先ワークスペースの参加者は自身のワークスペースのアカウントで投稿</li>
+    <li>共有チャネルのメッセージはどちらのワークスペースの保存期間ポリシーが適用されるか明示的に選択可能</li>
+  </ul>
+</section>
+
+<section id="message" data-category="message" aria-labelledby="h-message">
+  <h2 id="h-message">8. メッセージ</h2>
+  <ul>
+    <li>ユーザーはチャネル内にテキストメッセージを投稿できる</li>
+    <li>メッセージは最大4000文字</li>
+    <li>メッセージには投稿時刻と投稿者が記録される</li>
+    <li>メッセージは投稿後も時系列で永続表示される</li>
+    <li>メッセージ本文ではMarkdown記法 (太字、斜体、コードブロック、リンク、引用、リスト) が利用可能</li>
+  </ul>
+
+  <section aria-labelledby="h-msg-edit">
+    <h3 id="h-msg-edit">8.1 編集と削除</h3>
+    <ul>
+      <li>ユーザーは自分のメッセージを編集できる</li>
+      <li>編集されたメッセージには「編集済み」の表示が付く</li>
+      <li>編集履歴は保存されないが、編集日時は記録される</li>
+      <li>ユーザーは自分のメッセージを削除できる</li>
+      <li>チャネル管理者は他人のメッセージを削除できる (編集は不可)</li>
+      <li>削除されたメッセージは「このメッセージは削除されました」というプレースホルダで表示される</li>
+      <li>メッセージ削除はソフトデリートとし、削除ログは90日間保管される</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-msg-thread">
+    <h3 id="h-msg-thread">8.2 スレッド</h3>
+    <ul>
+      <li>任意のメッセージに対して返信を行うことでスレッドを開始できる</li>
+      <li>スレッド内のメッセージはチャネルのメインタイムラインには表示されない</li>
+      <li>スレッド開始者および参加者は新規スレッド返信時に通知を受け取る</li>
+      <li>スレッド返信は「チャネルにも投稿」オプションで親チャネルへ二重投稿可能</li>
+      <li>スレッド内のメッセージにもメンション・編集・削除・リアクションが可能</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="h-msg-react">
+    <h3 id="h-msg-react">8.3 リアクション</h3>
+    <ul>
+      <li>ユーザーはメッセージに対して絵文字リアクションを付与できる</li>
+      <li>1メッセージあたり最大23種類の絵文字をリアクションとして表示する</li>
+      <li>同一ユーザーが同一メッセージに対して同じ絵文字を複数回リアクションすることはできない</li>
+      <li>カスタム絵文字はワークスペース管理者がアップロードでき、全ユーザーがリアクションに使用できる</li>
+      <li>カスタム絵文字は1ファイル128KB以下、PNG / JPEG / GIF形式</li>
+    </ul>
+  </section>
+</section>
+
+<section id="mention" data-category="message" aria-labelledby="h-mention">
+  <h2 id="h-mention">9. メンション</h2>
+  <ul>
+    <li>メッセージ内で <code>@ユーザー名</code> を入力するとそのユーザーをメンションできる</li>
+    <li>メンションされたユーザーには通知が届く (通知設定に従う)</li>
+    <li><code>@channel</code> は同一チャネルの全メンバーをメンションする</li>
+    <li><code>@here</code> は同一チャネルでオンラインの全メンバーをメンションする</li>
+    <li><code>@channel</code> および <code>@here</code> の使用はチャネル管理者によって制限可能</li>
+    <li>ユーザーグループ (<code>@team-frontend</code> 等) を作成可能
+      <ul>
+        <li>ユーザーグループはオーナーまたは管理者が作成し、所属メンバーを管理する</li>
+        <li>ユーザーグループのメンションはグループ内全員へのメンションとして扱われる</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section id="files" data-category="message" aria-labelledby="h-files">
+  <h2 id="h-files">10. ファイル共有</h2>
+  <ul>
+    <li>ユーザーはメッセージにファイルを添付できる</li>
+    <li>1ファイルあたり最大100MB (Enterpriseプランは最大5GB)</li>
+    <li>1メッセージあたり最大10ファイル添付可能</li>
+    <li>対応形式: 画像 (PNG/JPEG/GIF/WebP)、PDF、動画 (MP4/MOV)、各種ドキュメント、ZIPアーカイブ</li>
+    <li>画像とPDFはインラインプレビュー表示される</li>
+    <li>ファイルはアクセス権を持つチャネル参加者のみ閲覧可能</li>
+    <li>ファイルは投稿者またはチャネル管理者によって削除可能</li>
+    <li>削除されたファイルは即座にダウンロード不可となるが、メタデータは90日間保持される</li>
+    <li>ウイルススキャン: アップロード時に自動的にスキャンされ、検知時は隔離される</li>
+  </ul>
+</section>
+
+<section id="dm" data-category="message" aria-labelledby="h-dm">
+  <h2 id="h-dm">11. ダイレクトメッセージ (DM)</h2>
+  <ul>
+    <li>ユーザーは同一ワークスペース内の任意のユーザーにDMを送信できる</li>
+    <li>DMは1対1の会話のみをサポートする</li>
+    <li>マルチパーティDM (MPDM): 最大8名までのグループDM。チャネルとは異なり名前を持たない一時的な会話</li>
+    <li>DM内のメッセージはチャネルメッセージと同じ仕様</li>
+    <li>DMは送信者と受信者のみが閲覧でき、ワークスペース管理者であっても他人のDMは閲覧できない</li>
+    <li>DMは検索の対象だが、本人参加のDMのみが検索結果に含まれる</li>
+  </ul>
+</section>
+
+<section id="search" data-category="message" aria-labelledby="h-search">
+  <h2 id="h-search">12. 検索</h2>
+  <ul>
+    <li>ユーザーはメッセージ本文・チャネル名・ユーザー名・ファイル名を横断検索できる</li>
+    <li>検索結果はメッセージ・チャネル・ユーザー・ファイルのカテゴリ別に表示される</li>
+    <li>検索対象は本人がアクセス権を持つチャネルとDMに限定される</li>
+    <li>検索結果は関連度順またはタイムスタンプ降順で並び替えできる</li>
+    <li>1クエリあたり最大1000件まで返却し、それ以上はページングで取得する</li>
+  </ul>
+
+  <h3>絞り込みフィルタ</h3>
+  <table>
+    <thead>
+      <tr><th scope="col">フィルタ</th><th scope="col">説明</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>from:ユーザー名</code></td><td>投稿者で絞り込み</td></tr>
+      <tr><td><code>in:チャネル名</code></td><td>チャネルで絞り込み</td></tr>
+      <tr><td><code>before:YYYY-MM-DD</code> / <code>after:YYYY-MM-DD</code></td><td>期間で絞り込み</td></tr>
+      <tr><td><code>has:link</code> / <code>has:file</code> / <code>has:reaction</code></td><td>添付要素で絞り込み</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="notify" data-category="notification" aria-labelledby="h-notify">
+  <h2 id="h-notify">13. 通知</h2>
+
+  <h3>チャネル通知レベル</h3>
+  <p>各ユーザーは以下の3種類のチャネル通知レベルを設定できる。</p>
+  <ul>
+    <li>すべてのメッセージ</li>
+    <li>メンション時のみ</li>
+    <li>なし</li>
+  </ul>
+
+  <ul>
+    <li>DMは常にメンション扱いで通知される</li>
+    <li>通知レベルはチャネル単位、およびワークスペース全体のデフォルトとして設定可能</li>
+    <li>ワークスペースのデフォルトはチャネル個別設定で上書きされる</li>
+    <li>「通知を一時停止」機能で30分・1時間・2時間・翌朝9時まで全通知を抑止できる</li>
+    <li>通知抑止中もアプリ内バッジ表示は継続する</li>
+    <li>キーワード通知: ユーザーは自身のキーワードリストを設定でき、メッセージにそのキーワードが含まれた場合に通知を受け取る</li>
+    <li>通知方法: ブラウザ通知、メール、モバイルプッシュ</li>
+    <li>通知方法の優先順位: ブラウザ未開封時はメール、5分以内に既読されない場合のみメールを送る</li>
+  </ul>
+</section>
+
+<section id="pin" data-category="message" aria-labelledby="h-pin">
+  <h2 id="h-pin">14. ピン留めとブックマーク</h2>
+  <ul>
+    <li>チャネル管理者またはチャネルメンバーは重要メッセージをチャネル内で「ピン留め」できる</li>
+    <li>ピン留めはチャネルあたり最大100件</li>
+    <li>ピン留めされたメッセージはチャネル内のサイドパネルから一覧アクセス可能</li>
+    <li>ユーザーは個人ブックマークとして任意のメッセージを保存できる</li>
+  </ul>
+</section>
+
+<section id="draft" data-category="message" aria-labelledby="h-draft">
+  <h2 id="h-draft">15. 下書きと送信予約</h2>
+  <ul>
+    <li>メッセージ入力中の内容は自動的に下書きとして保存される</li>
+    <li>下書きはチャネル / DM / スレッド単位で保持される</li>
+    <li>下書きはアプリ再起動後も復元される</li>
+    <li>ユーザーは送信予約機能で最大120日先までの任意の日時にメッセージ送信を予約できる</li>
+    <li>予約済みメッセージは送信前に編集または取り消しが可能</li>
+  </ul>
+</section>
+
+<section id="read" data-category="message" aria-labelledby="h-read">
+  <h2 id="h-read">16. 既読管理</h2>
+  <ul>
+    <li>各メッセージは閲覧者単位で既読 / 未読状態を保持する</li>
+    <li>チャネル一覧では未読のあるチャネルが太字で表示される</li>
+    <li>ユーザーは「未読をすべて既読にする」アクションでチャネル単位またはワークスペース単位で一括既読化できる</li>
+    <li>既読位置 (最終既読メッセージID) はサーバーで保存され、デバイス間で同期される</li>
+  </ul>
+</section>
+
+<section id="workflow" data-category="extension" aria-labelledby="h-workflow">
+  <h2 id="h-workflow">17. ワークフロービルダー</h2>
+  <ul>
+    <li>ノーコードのワークフロー作成機能を提供する</li>
+    <li>ワークフローはトリガー、ステップ、アクションの組み合わせで定義される</li>
+    <li>ワークフローはチャネル単位またはワークスペース単位で公開可能</li>
+    <li>作成・編集はオーナーまたは管理者のみ可能、メンバーはリクエスト送信のみ</li>
+    <li>各ワークフローの実行ログは過去30日間保存される</li>
+    <li>ワークフロー実行回数: 1ワークスペースあたり月間10000回まで (Pro)、無制限 (Enterprise)</li>
+  </ul>
+
+  <h3>トリガー / ステップ種別</h3>
+  <table>
+    <thead>
+      <tr><th scope="col">区分</th><th scope="col">種別</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>トリガー</td><td>絵文字リアクション、特定キーワードのメッセージ投稿、フォーム送信、スケジュール (cron形式)、Webhook受信</td></tr>
+      <tr><td>ステップ</td><td>フォーム入力、条件分岐 (if/else)、メッセージ送信、外部API呼び出し、待機 (最大7日)</td></tr>
+    </tbody>
+  </table>
+
+  <figure class="diagram" aria-label="ワークフロー構造図">
+    <figcaption>ワークフローの構造: トリガー → ステップ → アクション</figcaption>
+    <svg viewBox="0 0 540 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="wf-diag-title">
+      <title id="wf-diag-title">トリガー、ステップ、アクションの組み合わせ</title>
+      <rect x="20" y="35" width="120" height="50" rx="6" fill="#fff" stroke="#6f42c1"/>
+      <text x="80" y="65" text-anchor="middle" font-size="14">トリガー</text>
+      <rect x="200" y="35" width="120" height="50" rx="6" fill="#fff" stroke="#6f42c1"/>
+      <text x="260" y="65" text-anchor="middle" font-size="14">ステップ</text>
+      <rect x="380" y="35" width="120" height="50" rx="6" fill="#fff" stroke="#6f42c1"/>
+      <text x="440" y="65" text-anchor="middle" font-size="14">アクション</text>
+      <line x1="140" y1="60" x2="200" y2="60" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <line x1="320" y1="60" x2="380" y2="60" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#arr2)"/>
+      <defs>
+        <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#5a5a5a"/>
+        </marker>
+      </defs>
+    </svg>
+  </figure>
+</section>
+
+<section id="ai" data-category="extension" aria-labelledby="h-ai">
+  <h2 id="h-ai">18. AIアシスト機能</h2>
+  <ul>
+    <li>チャネルやスレッドのメッセージを要約する「会話サマリー」機能を提供する</li>
+    <li>会話サマリーはユーザーが手動で実行するか、長時間オフラインだったユーザーに自動生成して提示する</li>
+    <li>メッセージ作成時に文脈に応じた返信候補 (スマートリプライ) を3件まで提示</li>
+    <li>メンション通知に対するクイックリアクション (絵文字提案、定型返信提案)</li>
+    <li>検索クエリの自然言語入力対応 (例: 「先週マーケティングがリリースした件」)</li>
+    <li>AIが生成した内容には必ず「AI生成」のラベルが付与される</li>
+    <li>AI機能はワークスペース単位でオン/オフ切替可能、デフォルトはオフ</li>
+    <li>AI機能利用時のメッセージ内容は外部のAIプロバイダに送信されることをUI上で明示する</li>
+    <li>ユーザーはAI機能のオプトアウトを個人設定で選択可能 (オプトアウト時は本人のメッセージはAI処理されない)</li>
+    <li>AI翻訳: チャネル / スレッド単位でメッセージを指定言語へ翻訳可能、原文と訳文を併記表示</li>
+    <li>AIアクションアイテム抽出: スレッド・ハドル文字起こしから「やること」「決定事項」「期限」を構造化して抽出</li>
+    <li>AIプロバイダ選択 (Enterprise): 自社契約のOpenAI / Anthropic / 自社オンプレLLMからプロバイダを選択可能</li>
+    <li>AIガードレール: 機密情報 (社外秘ラベル) が付与されたチャネルのメッセージはAI処理を強制的にスキップする</li>
+    <li>AI利用統計は管理コンソールで確認可能、月次の使用量とコストを表示</li>
+  </ul>
+</section>
+
+<section id="integration" data-category="extension" aria-labelledby="h-integration">
+  <h2 id="h-integration">19. インテグレーションと外部連携</h2>
+  <ul>
+    <li>外部サービスとの連携は「アプリ」と「Webhook」の2種類でサポートされる</li>
+    <li>アプリストアからインストール型のアプリを追加可能</li>
+    <li>アプリのインストールはオーナーまたは管理者のみが実行可能 (メンバーはリクエスト送信のみ)</li>
+    <li>受信Webhook: 外部サービスからチャネルへメッセージを投稿するためのURLを発行可能
+      <ul>
+        <li>受信Webhookごとにレートリミットあり (60秒あたり最大60リクエスト)</li>
+      </ul>
+    </li>
+    <li>送信Webhook: 特定のキーワードがチャネルに投稿されたときに外部URLへPOSTリクエストを送信</li>
+    <li>スラッシュコマンド: <code>/コマンド名</code> でアプリの機能を呼び出し可能</li>
+    <li>すべての連携はOAuth 2.0で認可される</li>
+    <li>アプリスコープ: 細粒度のスコープ (channels:read, chat:write, files:write など30種以上) を組み合わせて権限を要求</li>
+    <li>アプリ設定の変更履歴は監査ログに記録される</li>
+    <li>アプリ提出ガイドライン: アプリストア掲載前にセキュリティ審査を実施 (内製アプリは免除)</li>
+    <li>カスタムインテグレーション: 単一ワークスペース内で利用するインテグレーションは管理者承認後に即時利用可能</li>
+    <li>連携先サービス例 (公式アプリストア掲載): GitHub、Jira、Asana、Notion、Google Drive、Zoom、Salesforce、PagerDuty、Datadog</li>
+  </ul>
+</section>
+
+<section id="api" data-category="tech" aria-labelledby="h-api">
+  <h2 id="h-api">20. API</h2>
+  <ul>
+    <li>LinkrはREST APIおよびリアルタイムイベント受信用のWebSocket APIを提供する</li>
+    <li>API認証はBotトークンまたはユーザートークンで行う</li>
+    <li>レートリミット: 1ワークスペースあたり毎秒60リクエスト (バースト120)</li>
+    <li>レートリミット超過時はHTTP 429を返却し、<code>Retry-After</code> ヘッダで待機時間を通知</li>
+    <li>API経由で投稿されたメッセージにはBotユーザーが投稿者として記録される</li>
+    <li>イベントAPIは新規メッセージ・編集・削除・リアクション追加など30種類以上のイベントをWebSocketで配信</li>
+    <li>API SDK: 公式に Python / JavaScript / Go の3言語でSDKを提供する</li>
+  </ul>
+</section>
+
+<section id="audit" data-category="security" aria-labelledby="h-audit">
+  <h2 id="h-audit">21. 監査と履歴</h2>
+  <p>ワークスペース管理者は以下のイベントを監査ログで確認できる。</p>
+  <ul>
+    <li>ユーザーのログイン / ログアウト (IPアドレス・User-Agent含む)</li>
+    <li>ロール変更</li>
+    <li>チャネル作成 / アーカイブ / 復元</li>
+    <li>ユーザー招待 / 退会 / 無効化</li>
+    <li>アプリのインストール / アンインストール</li>
+    <li>設定変更 (SSO・SCIM・通知デフォルト等)</li>
+  </ul>
+
+  <h3>監査ログの保持期間</h3>
+  <table>
+    <thead>
+      <tr><th scope="col">プラン</th><th scope="col">保持期間</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Pro</td><td>90日間</td></tr>
+      <tr><td>Enterprise</td><td>7年間 (法令対応)</td></tr>
+    </tbody>
+  </table>
+
+  <ul>
+    <li>通常メンバーは自身の操作履歴のみを過去30日分閲覧可能</li>
+    <li>監査ログは管理者向けUI、CSVエクスポート、SIEMフォワーディング (Enterprise) で取得可能</li>
+  </ul>
+</section>
+
+<section id="data-export" data-category="security" aria-labelledby="h-data-export">
+  <h2 id="h-data-export">22. データ保存とエクスポート</h2>
+  <ul>
+    <li>データ保存リージョン: 米国・EU・アジア太平洋から選択可能 (Enterpriseプラン)</li>
+    <li>メッセージ保存期間ポリシーをワークスペース全体およびチャネル単位で設定可能
+      <ul>
+        <li>例: 30日 / 90日 / 1年 / 無期限</li>
+        <li>期限超過のメッセージは自動的に削除される</li>
+      </ul>
+    </li>
+    <li>DMには独自の保存ポリシーを設定可能</li>
+  </ul>
+
+  <h3>データエクスポート</h3>
+  <dl>
+    <dt>標準エクスポート</dt>
+    <dd>パブリックチャネルのメッセージとファイルをZIPで出力 (オーナー限定)</dd>
+    <dt>コンプライアンスエクスポート</dt>
+    <dd>プライベートチャネルおよびDMを含む全データを出力 (Enterprise限定、法的要請時のみ)</dd>
+  </dl>
+  <ul>
+    <li>エクスポート完了時にオーナーに通知メールが送信され、ダウンロードリンクは7日間有効</li>
+  </ul>
+</section>
+
+<section id="mobile" data-category="tech" aria-labelledby="h-mobile">
+  <h2 id="h-mobile">23. モバイルアプリ</h2>
+  <ul>
+    <li>iOS (iOS 16以降) およびAndroid (Android 10以降) のネイティブアプリを提供する</li>
+    <li>モバイルアプリは本書で定義する全機能のうち、API経由で提供可能なものをすべてサポートする</li>
+    <li>モバイル独自機能: プッシュ通知、生体認証 (Face ID / Touch ID / 指紋認証)、デバイスごとのセッション管理</li>
+    <li>モバイルからのSSO認証はインアプリブラウザで行う</li>
+    <li>アプリのバージョンが古すぎる場合 (リリースから365日以上経過) は強制アップデートが要求される</li>
+    <li>ネットワークオフライン時もキャッシュされたメッセージは閲覧可能、復帰時に未送信メッセージを自動再送</li>
+    <li>モバイル端末紛失時: 管理者または本人がリモートからセッションを失効可能、セッション失効と同時にローカルキャッシュも削除される</li>
+    <li>モバイルアプリのプッシュ通知ペイロードはメッセージ本文を含めず、件名のみ送信 (情報漏洩対策)</li>
+    <li>モバイル管理 (MDM): Microsoft Intune および Jamf による配布・ポリシー強制をサポート</li>
+    <li>バックグラウンド更新は省電力モード時に自動的に頻度を下げる (Android Doze、iOS Low Power Mode)</li>
+  </ul>
+</section>
+
+<section id="help" data-category="support" aria-labelledby="h-help">
+  <h2 id="h-help">33. ヘルプとサポート</h2>
+  <ul>
+    <li>アプリ内ヘルプセンター: 機能別のヘルプ記事をワークスペース言語で表示</li>
+    <li>ユーザーは右下のヘルプアイコンから検索可能</li>
+    <li>お問い合わせフォーム: ヘルプセンターから直接サポートチケットを起票可能</li>
+    <li>サポート対応時間: Pro 平日9-18時 (日本時間)、Enterprise 24/7</li>
+    <li>ステータスページ: 全ユーザー向けにサービス稼働状況を公開、過去90日のインシデントを掲載</li>
+    <li>フィードバック機能: ユーザーは機能要望を投稿可能、Vote付きで他ユーザーが賛同表明できる</li>
+    <li>リリースノート: アプリ内通知バーで主要更新を告知、詳細は公式ブログで公開</li>
+    <li>開発者向けドキュメント: docs.linkr.app で公開、APIリファレンス・SDK使用例・チュートリアルを掲載</li>
+    <li>ベータプログラム: 希望するワークスペースは新機能の早期アクセスを受けられる、フィードバック義務あり</li>
+  </ul>
+</section>
+
+<section id="privacy" data-category="security" aria-labelledby="h-privacy">
+  <h2 id="h-privacy">34. 利用規約とプライバシー</h2>
+  <ul>
+    <li>ワークスペース作成時に利用規約・プライバシーポリシーへの同意を要求</li>
+    <li>ポリシー変更時は30日前に全ワークスペース管理者へメール通知し、再同意を要求</li>
+    <li>ユーザーデータの利用範囲はサービス提供と統計分析に限定し、第三者への販売は行わない</li>
+    <li>統計分析データは個人を特定不能な形に匿名化された後に利用される</li>
+    <li>ユーザーは自身のデータをJSONまたはCSV形式でいつでもエクスポート可能 (個人エクスポート)</li>
+    <li>アカウント削除時には個人データを30日以内に完全消去する (バックアップからの削除は90日以内)</li>
+    <li>Cookieとトラッキング: ファーストパーティCookieのみ使用し、サードパーティトラッカーは使用しない</li>
+    <li>マーケティング通信: ニュースレター・新機能アナウンスは個別にオプトイン/アウト可能</li>
+    <li>未成年ユーザー: 13歳未満は利用不可、13-17歳は保護者同意ワークフローを通過した場合のみ利用可</li>
+    <li>法執行機関からの開示要求: 透明性レポートを年2回公開、件数と種別を開示</li>
+    <li>児童性的虐待コンテンツ (CSAM): NCMEC等への自動通報および即座のアカウント停止</li>
+    <li>バイオメトリクスデータ: 顔認識・指紋等のバイオメトリクスデータはサーバーに送信せず、デバイス内で処理</li>
+    <li>データ常駐: 顧客は自社データの保管国を米国・EU・日本・シンガポールから選択可能 (Enterprise)</li>
+    <li>リテンションロック: コンプライアンス要件で削除を防ぐべきデータは管理者でも削除不可に設定可能</li>
+    <li>プライバシー強化機能: 「自分の名前で検索可能か」をユーザーが個別に制御可能</li>
+    <li>外部共有制限: 共有チャネル機能の利用をワークスペース単位またはチャネル単位で禁止可能</li>
+    <li>退職者データ: 退職者アカウントは「読み取り専用ユーザー」として保持するか、即時無効化を選択可能</li>
+    <li>データ持ち出し検知: 短時間に大量のメッセージダウンロードや検索が発生した場合に管理者へ自動通知</li>
+    <li>透明性レポート: 政府からの情報開示要求件数、自動コンテンツ削除件数等を半年ごとに公開</li>
+  </ul>
+</section>
+
+<section id="a11y" data-category="nfr" aria-labelledby="h-a11y">
+  <h2 id="h-a11y">24. アクセシビリティ</h2>
+  <ul>
+    <li>WCAG 2.1 Level AA 準拠</li>
+    <li>スクリーンリーダー (VoiceOver / NVDA / JAWS) 対応</li>
+    <li>キーボードのみで全機能にアクセス可能</li>
+    <li>カラーコントラスト比 4.5:1 以上 (通常テキスト)</li>
+    <li>フォーカスインジケータは常に可視</li>
+  </ul>
+</section>
+
+<section id="i18n" data-category="nfr" aria-labelledby="h-i18n">
+  <h2 id="h-i18n">25. 国際化</h2>
+  <ul>
+    <li>UI翻訳: 日本語、英語、簡体字中国語、韓国語、ドイツ語、フランス語、スペイン語の7言語</li>
+    <li>ユーザーごとに表示言語を選択可能</li>
+    <li>ワークスペース管理者はワークスペースのデフォルト言語を設定可能</li>
+    <li>メッセージ本文は翻訳されない (ユーザー入力)</li>
+    <li>日付・時刻はユーザーのタイムゾーン設定に従って表示される</li>
+    <li>文字コード: UTF-8</li>
+  </ul>
+</section>
+
+<section id="security" data-category="security" aria-labelledby="h-security">
+  <h2 id="h-security">26. セキュリティ</h2>
+  <ul>
+    <li>通信はすべてTLS 1.2以上で暗号化される</li>
+    <li>保存時暗号化: AES-256でメッセージ・ファイルを暗号化</li>
+    <li>エンタープライズキー管理 (EKM): 顧客管理鍵 (CMK) によるキーラップ (Enterpriseプラン)</li>
+    <li>データ漏洩防止 (DLP): メッセージ送信時にカスタムパターン (クレジットカード番号等) を検出し、ブロックまたは警告</li>
+    <li>セッション管理: ユーザーは全デバイスで同時ログイン可能、ただしセッション一覧から個別または全セッションを取り消し可能</li>
+    <li>IPアドレス制限: ワークスペースアクセスを許可IPレンジに制限可能 (Enterpriseプラン)</li>
+    <li>ペネトレーションテスト: 年2回外部のセキュリティベンダーが実施し、結果サマリーをエンタープライズ顧客に開示</li>
+    <li>バグバウンティ: HackerOne経由でセキュリティ脆弱性報告を受け付け、深刻度に応じて報奨金を支払い</li>
+    <li>異常検知: 短時間の大量メッセージ削除、想定外の地理的アクセスパターンを検知して管理者へアラート</li>
+    <li>パスワードポリシー: 過去5世代のパスワード再利用を禁止、90日ごとの強制変更 (Enterpriseで設定可能)</li>
+    <li>DDoS対策: AWS Shield Advanced および Cloudflare のレイヤー7保護を二重化</li>
+  </ul>
+</section>
+
+<section id="nfr" data-category="nfr" aria-labelledby="h-nfr">
+  <h2 id="h-nfr">27. 非機能要件</h2>
+  <table>
+    <thead>
+      <tr><th scope="col">項目</th><th scope="col">要件</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>同時接続ユーザー数</td><td>1ワークスペースあたり最大10000 (Enterpriseプラン)</td></tr>
+      <tr><td>メッセージ送信レイテンシ</td><td>送信から表示まで95パーセンタイルで500ms以内</td></tr>
+      <tr><td>検索応答時間</td><td>95パーセンタイルで1秒以内 (1000万メッセージ規模のワークスペース)</td></tr>
+      <tr><td>ファイルアップロード</td><td>100MBファイルが30秒以内に完了 (回線100Mbps想定)</td></tr>
+      <tr><td>可用性</td><td>SLA 99.9% (Pro) / 99.99% (Enterprise)</td></tr>
+      <tr><td>データ永続性</td><td>メッセージは保存ポリシー期間内は無損失で保存される (年間データ損失率 &lt; 0.0001%)</td></tr>
+      <tr><td>バックアップ</td><td>全データを毎日バックアップ、地理的に分離した3拠点に保管 (RPO 24時間 / RTO 4時間)</td></tr>
+      <tr><td>対応ブラウザ</td><td>最新版のChrome / Safari / Firefox / Edge</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="tech-stack" data-category="tech" aria-labelledby="h-tech-stack">
+  <h2 id="h-tech-stack">28. 技術スタック</h2>
+
+  <section aria-labelledby="h-tech-fe">
+    <h3 id="h-tech-fe">28.1 フロントエンド</h3>
+    <dl>
+      <dt>言語</dt><dd>TypeScript 5.x</dd>
+      <dt>フレームワーク</dt><dd>React 18以上</dd>
+      <dt>状態管理</dt><dd>Zustand</dd>
+      <dt>ビルドツール</dt><dd>Vite</dd>
+      <dt>ルーティング</dt><dd>React Router 6</dd>
+      <dt>スタイリング</dt><dd>Tailwind CSS + shadcn/ui コンポーネント</dd>
+      <dt>フォーム</dt><dd>React Hook Form + Zod (バリデーション)</dd>
+      <dt>E2Eテスト</dt><dd>Playwright</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-tech-be">
+    <h3 id="h-tech-be">28.2 バックエンド</h3>
+    <dl>
+      <dt>言語</dt><dd>Go 1.22以上</dd>
+      <dt>HTTPフレームワーク</dt><dd>chi</dd>
+      <dt>ORM/SQLジェネレータ</dt><dd>sqlc</dd>
+      <dt>認証</dt><dd>JWT (RS256、鍵ローテーションは月次)</dd>
+      <dt>リアルタイム</dt><dd>WebSocket (RFC 6455)、サーバー間ファンアウトはRedis Pub/Sub</dd>
+      <dt>非同期処理</dt><dd>Amazon SQS + Lambda (通知配信、監査ログ、エクスポート)</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-tech-ds">
+    <h3 id="h-tech-ds">28.3 データストア</h3>
+    <dl>
+      <dt>PostgreSQL 16</dt><dd>主データ。Aurora PostgreSQL Serverless v2を使用、リードレプリカ最低3台</dd>
+      <dt>Redis 7</dt><dd>セッション、Pub/Sub、レートリミット、ホットキャッシュ。ElastiCache for Redis (クラスタモード有効)</dd>
+      <dt>Elasticsearch 8</dt><dd>全文検索。OpenSearch Service</dd>
+      <dt>S3</dt><dd>ファイル添付。署名付きURLでアクセス制御、ライフサイクルポリシーで保存期間ポリシーを実装</dd>
+      <dt>Glacier</dt><dd>長期保存データ (Enterprise保存期間ポリシー)</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-tech-infra">
+    <h3 id="h-tech-infra">28.4 インフラ</h3>
+    <dl>
+      <dt>クラウド</dt><dd>AWS、リージョンは契約に応じて選択 (米国・EU・APAC)</dd>
+      <dt>IaC</dt><dd>Terraform (terragruntでマルチ環境管理)</dd>
+      <dt>コンテナオーケストレーション</dt><dd>ECS Fargate</dd>
+      <dt>CDN</dt><dd>CloudFront</dd>
+      <dt>WAF</dt><dd>AWS WAF + Cloudflareの二段構成</dd>
+      <dt>DNS</dt><dd>Route 53</dd>
+      <dt>秘匿情報管理</dt><dd>AWS Secrets Manager + 顧客管理鍵 (CMK)</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-tech-cicd">
+    <h3 id="h-tech-cicd">28.5 CI/CD と開発フロー</h3>
+    <dl>
+      <dt>バージョン管理</dt><dd>GitHub</dd>
+      <dt>CI/CD</dt><dd>GitHub Actions (PR毎に lint・test・E2E、mainマージ時にBlue/Greenデプロイ)</dd>
+      <dt>ブランチ戦略</dt><dd>トランクベース開発 + Feature Flag</dd>
+      <dt>フィーチャーフラグ</dt><dd>LaunchDarkly</dd>
+      <dt>依存脆弱性スキャン</dt><dd>Snyk + Dependabot</dd>
+      <dt>コードレビュー</dt><dd>全PRに最低2名のレビュー必須、CODEOWNERSで担当者自動アサイン</dd>
+      <dt>リリース頻度</dt><dd>週2回 (火・木)、ホットフィックスは随時</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-tech-ops">
+    <h3 id="h-tech-ops">28.6 監視と運用</h3>
+    <ul>
+      <li>APM: Datadog</li>
+      <li>ログ集約: Datadog Logs</li>
+      <li>アラート: PagerDutyへの連携、オンコールローテーションは1週間交代</li>
+      <li>SLO: メッセージ送信成功率99.95%、APIレスポンスp95 500ms以内</li>
+      <li>インシデント対応: PagerDuty呼び出しから5分以内の一次応答、30分以内のステータスページ更新</li>
+      <li>カオスエンジニアリング: 月1回 Gremlin で本番に近いステージング環境で障害注入を実施</li>
+      <li>パフォーマンステスト: 主要エンドポイントの k6 負荷テストをCIで毎晩実行</li>
+      <li>リリースバジェット (Error Budget): SLO違反時はリリースを自動停止、根本原因分析の完了まで再開不可</li>
+      <li>設定変更履歴: Terraform State の差分を Git に記録、本番環境変更は2名承認制</li>
+      <li>データベースマイグレーション: pg-online-schema-change によるロックフリーマイグレーション</li>
+      <li>セキュリティパッチ運用: クリティカル脆弱性は24時間以内、ハイは7日以内、ミディアムは30日以内に適用</li>
+      <li>バックアップリストア演習: 四半期に1回、別環境で本番バックアップからの復旧をリハーサル</li>
+      <li>カスタマーアドバイザリ: 重大インシデント発生時は1時間以内にステータスページ更新、24時間以内に詳細レポート公開</li>
+    </ul>
+  </section>
+</section>
+
+<section id="huddle" data-category="extension" aria-labelledby="h-huddle">
+  <h2 id="h-huddle">29. 音声・ビデオハドル</h2>
+  <ul>
+    <li>チャネルおよびDM内で音声・ビデオハドル (短時間ミーティング) を開始可能</li>
+    <li>ハドルは最大25名 (Pro) / 50名 (Enterprise) まで参加可能</li>
+    <li>ハドル開始時にチャネル内に通知が表示され、参加可能なメンバーがワンクリックで参加</li>
+    <li>画面共有: 全画面・特定ウィンドウ・特定ブラウザタブから選択可能</li>
+    <li>ハドルの録画はオーナー権限を持つユーザーのみが開始可能</li>
+    <li>録画データは投稿チャネルにファイルとして自動添付され、文字起こしが付与される</li>
+    <li>録画は保存ポリシーに従い、デフォルト90日間保管</li>
+    <li>ハドル中の音声品質指標 (パケロス・ビットレート・遅延) はリアルタイムでホストに表示</li>
+    <li>バックグラウンドノイズ除去機能をデフォルトで有効化、ユーザー設定で無効化可能</li>
+  </ul>
+</section>
+
+<section id="form" data-category="extension" aria-labelledby="h-form">
+  <h2 id="h-form">30. カスタムフォーム</h2>
+  <ul>
+    <li>ワークフロー内またはメッセージから独立したフォームを作成可能</li>
+    <li>フィールド種別: テキスト (短文/長文)、数値、選択 (単一/複数)、日付、日時、ファイルアップロード、ユーザー選択、チャネル選択</li>
+    <li>フォームには必須項目・バリデーションルール (正規表現・最小最大値) を設定可能</li>
+    <li>回答結果は作成者または指定された通知先チャネルに投稿される</li>
+    <li>回答はCSV形式でエクスポート可能 (フォーム作成者のみ)</li>
+    <li>フォームは公開リンク経由でワークスペース外のユーザーからも回答可能 (Enterpriseプラン)</li>
+    <li>フォームの匿名回答オプションを設定可能、匿名時は回答者情報をエクスポートに含めない</li>
+  </ul>
+</section>
+
+<section id="compliance" data-category="security" aria-labelledby="h-compliance">
+  <h2 id="h-compliance">31. コンプライアンスとガバナンス</h2>
+  <ul>
+    <li>リーガルホールド (Legal Hold): 特定ユーザーまたはチャネルのデータを保存ポリシーに関わらず削除しない設定 (Enterprise)</li>
+    <li>リーガルホールドはコンプライアンス管理者ロールのみが設定可能、設定中は本人にも通知されない</li>
+    <li>eDiscovery: 訴訟対応のためのコンプライアンスエクスポートに加え、特定キーワード・期間・ユーザーで絞り込み検索可能</li>
+    <li>データ主権: GDPR・CCPA・APPI等の各国法令に対応したデータアクセス・削除リクエストフローを提供</li>
+    <li>「忘れられる権利」リクエスト: ユーザー要求から30日以内に該当データの匿名化または削除を完了</li>
+    <li>監査ログのSIEMフォワーディング: Splunk・Datadog・QRadarへのリアルタイム配信 (Enterprise)</li>
+    <li>ISO 27001、SOC 2 Type II、ISMAP、HIPAA (Enterpriseの一部プランのみ) に準拠</li>
+    <li>データ処理委託先一覧 (Sub-processors) は公開ページで開示し、変更時は事前通知</li>
+    <li>カスタマー鍵管理 (CKM): Enterprise契約者は自社KMSで暗号化鍵を管理可能</li>
+    <li>顧客自身がアクセスログを取得できるカスタマーアクセスログ機能を提供 (Enterprise)</li>
+  </ul>
+</section>
+
+<section id="onboarding" data-category="account" aria-labelledby="h-onboarding">
+  <h2 id="h-onboarding">32. オンボーディングと管理ツール</h2>
+  <ul>
+    <li>新規ワークスペース作成時にセットアップウィザードが起動し、初期チャネル・招待・通知設定をガイド</li>
+    <li>新規メンバー初回ログイン時には個人プロフィール設定・通知設定・チャネル参加のチュートリアルを表示</li>
+    <li>ワークスペース管理者は管理コンソールから全ユーザーのアクティビティ統計 (DAU/MAU・メッセージ数・チャネル別参加率) を確認可能</li>
+    <li>管理者は特定ユーザーへ「お試しチャネル」「会社からのお知らせ」等の必須参加チャネルを強制設定可能</li>
+    <li>セキュリティアラート: 異常なログイン (新デバイス・異常な地域) を検知して本人と管理者へ通知</li>
+    <li>健全性チェック: 管理者向けに「使われていないチャネル」「長期間ログインしていないユーザー」を週次レポート</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>
