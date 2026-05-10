@@ -59,5 +59,83 @@
 
 ### Explain phase 起動
 
-PARALLEL=6 で 40試行を並列実行中。1試行のテストで33秒だったので、6並列なら 40/6 ≈ 7バッチ × 30-60s = 4-7分の見積もり。
+PARALLEL=6 で 40試行を並列実行。
+
+### Explain phase 完了
+
+**全40試行成功、失敗ゼロ**。所要時間 (各試行):
+
+| 長さ | MD       | HTML      |
+|---|---|---|
+| 50  | 30s     | 38-53s    |
+| 100 | 35-50s  | 50-80s    |
+| 250 | 80-130s | 100-330s  |
+| 500 | 207-220s | 205-637s |
+
+500_html_trial4 の637sは外れ値 (恐らくレートリミット待ち)。出力行数も MD/HTML 両方とも400-470行台で揃う。
+
+### Judge phase 起動
+
+Pass1 (15s, coverage判定) と Pass2 (9s, extras判定) の単独テストで動作確認。
+
+Pass1単独テスト結果 (50_md_trial1): covered=41/41 (完全カバー)
+Pass2単独テスト結果 (50_md_trial1): faithful=3 hallu=0
+
+40試行 × 2パス = 80判定を PARALLEL=6 で実行中。
+
+### Judge phase 1回目: 部分的失敗
+
+PARALLEL=6 で並列実行した結果、Opus 4.7 への並行 `claude -p` 起動が間欠的にレートリミットor競合で exit code 1。
+- Coverage判定: 29/40 成功、11/40 (主に250以降) 失敗
+- Extras判定: 1/40 成功、39/40 失敗
+
+エラー出力は空 (stderr blank)、stdout空。`claude exited 1` のみ。
+単独実行は問題なく成功 → 並列度の問題と判定。
+
+### 対策 → Judge phase 2回目
+
+`run_judge.py` に retry 機構 (3回まで、2-6秒バックオフ) を追加。
+PARALLEL=2 で再実行 → **80/80 すべて成功**。
+
+### 結果概要 (生指標)
+
+| 長さ | Coverage MD | Coverage HTML | Hallucination MD | Hallucination HTML |
+|---|---|---|---|---|
+| 50  | 100.0% | 100.0% | 0.9%  | **33.5%** |
+| 100 | 100.0% | 100.0% | 0.0%  | **23.7%** |
+| 250 | 100.0% | 100.0% | 0.0%  | 2.4% |
+| 500 |  99.9% | 100.0% | 0.1%  | 1.0% |
+
+→ **CoverageはMD/HTMLほぼ拮抗、しかしHallucination率はHTMLが一貫して高い**。
+
+### Hallucination内訳調査
+
+HTML側のhallucination内容を確認すると、大半が「HTML/SVG/CSS構造の観察」:
+- `<html lang="ja">`, viewport, charset, data-category 属性値の列挙
+- SVG図のキャプション、配色、矢印ラベル、要素名
+- 表構造、定義リスト構造
+- `requirements.html` のファイル名、外部 styles.css 参照
+
+これらは原文MDに存在しないため判定者は正しく「裏付けなし」と判定するが、
+実際のビジネス要件 (新機能・新数値) を捏造したものではない。
+
+### 業務hallucination分類 (Haiku 4.5)
+
+scripts/classify_extras_llm.py で各 hallucination claim を structural/business に分類:
+
+| 長さ | 形式 | 構造メタ平均 | 業務hallu平均 | 業務hallu率 |
+|---|---|---|---|---|
+| 50  | HTML | 18.2 | 3.4 | **6.97%** |
+| 50  | MD   | 0.4  | 0.0 | 0.00% |
+| 100 | HTML | 20.2 | 2.2 | 2.97% |
+| 100 | MD   | 0.0  | 0.0 | 0.00% |
+| 250 | HTML | 2.2  | 1.8 | 1.10% |
+| 250 | MD   | 0.0  | 0.0 | 0.00% |
+| 500 | HTML | 2.2  | 1.0 | 0.33% |
+| 500 | MD   | 0.2  | 0.2 | 0.07% |
+
+### レポート生成
+
+scripts/generate_report.py で結果を統合した HTML レポート (results/report.html) を生成。
+SVG棒グラフ x3、サマリー表 x2、差分表、業務hallucination例 (折りたたみ)、元記事との対照表。
 

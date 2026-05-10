@@ -53,26 +53,37 @@ def write_json(p: Path, obj):
     p.write_text(json.dumps(obj, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def run_claude(prompt: str, timeout: int = 600) -> str:
-    """claude -p でプロンプトを実行し、stdoutを返す。"""
-    proc = subprocess.run(
-        [
-            "claude",
-            "-p",
-            prompt,
-            "--model",
-            "claude-opus-4-7",
-            "--no-session-persistence",
-            "--allowedTools",
-            "",  # ツール禁止 (純粋なテキスト判定のみ)
-        ],
-        capture_output=True,
-        text=True,
-        timeout=timeout,
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(f"claude exited {proc.returncode}: {proc.stderr[:500]}")
-    return proc.stdout
+def run_claude(prompt: str, timeout: int = 600, retries: int = 3) -> str:
+    """claude -p でプロンプトを実行し、stdoutを返す。並列実行時の間欠的失敗に備えて数回リトライ。"""
+    last_err = None
+    for attempt in range(retries):
+        try:
+            proc = subprocess.run(
+                [
+                    "claude",
+                    "-p",
+                    prompt,
+                    "--model",
+                    "claude-opus-4-7",
+                    "--no-session-persistence",
+                    "--allowedTools",
+                    "",  # ツール禁止 (純粋なテキスト判定のみ)
+                ],
+                capture_output=True,
+                text=True,
+                timeout=timeout,
+            )
+            if proc.returncode == 0 and proc.stdout.strip():
+                return proc.stdout
+            last_err = (
+                f"exited {proc.returncode}, "
+                f"stderr={proc.stderr[:300]!r}, stdout_len={len(proc.stdout)}"
+            )
+        except subprocess.TimeoutExpired as e:
+            last_err = f"timeout after {timeout}s"
+        # 失敗時はバックオフ後リトライ
+        time.sleep(2 ** attempt + 2)  # 3s, 4s, 6s
+    raise RuntimeError(f"claude failed after {retries} retries: {last_err}")
 
 
 def extract_json(text: str) -> dict:
