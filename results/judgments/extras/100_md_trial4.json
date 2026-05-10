@@ -1,0 +1,24 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "本書はコア機能とコミュニケーション支援機能を定義する",
+      "evidence_in_source": "本書はコア機能とコミュニケーション支援機能を定義する"
+    },
+    {
+      "claim": "Linkrはチャットツールの名称である",
+      "evidence_in_source": "チャットツール「Linkr」要件定義書"
+    },
+    {
+      "claim": "Standardは本要件定義書のグレード/版である",
+      "evidence_in_source": "「Linkr」要件定義書 (Standard)"
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 100,
+    "format": "md",
+    "trial": 4,
+    "faithful_count": 3,
+    "hallucination_count": 0
+  }
+}

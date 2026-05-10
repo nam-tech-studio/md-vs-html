@@ -1,0 +1,15 @@
+{
+  "file": "500_html_trial4.json",
+  "types": [
+    "business",
+    "business",
+    "structural",
+    "structural"
+  ],
+  "claims": [
+    "セクション4にロール階層図(オーナー>管理者>メンバー、別ロールとしてゲスト)がインラインSVGで埋め込まれている",
+    "セクション17にワークフロー構造図(トリガー→ステップ→アクション)がインラインSVGで埋め込まれている",
+    "全体は<main>配下に<section>で構成されている",
+    "各セクションにはdata-category属性(overview/account/workspace/roles/security/channel/message/notification/extension/tech/nfr/support)が付与されている"
+  ]
+}

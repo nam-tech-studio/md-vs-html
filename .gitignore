@@ -1,1 +1,4 @@
-/results/
+# results/ は実験成果物として含める
+.DS_Store
+__pycache__/
+*.pyc

@@ -1,0 +1,33 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "原文では23.モバイルアプリの直後に33.ヘルプとサポートが登場し、その次に34.利用規約とプライバシーが来た後で24.アクセシビリティ〜32.オンボーディングが続く",
+      "evidence_in_source": "## 23. モバイルアプリ ... ## 33. ヘルプとサポート ... ## 34. 利用規約とプライバシー ... ## 24. アクセシビリティ"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "セクション4にロール階層図(オーナー>管理者>メンバー、別ロールとしてゲスト)がインラインSVGで埋め込まれている",
+      "reason": "原文書のセクション4にはSVG図やインライン図版の記述は一切ない"
+    },
+    {
+      "claim": "セクション17にワークフロー構造図(トリガー→ステップ→アクション)がインラインSVGで埋め込まれている",
+      "reason": "原文書のセクション17にはSVG図やインライン図版の記述は一切ない"
+    },
+    {
+      "claim": "全体は<main>配下に<section>で構成されている",
+      "reason": "原文書はMarkdown形式であり、<main>や<section>等のHTML構造に関する記述は存在しない"
+    },
+    {
+      "claim": "各セクションにはdata-category属性(overview/account/workspace/roles/security/channel/message/notification/extension/tech/nfr/support)が付与されている",
+      "reason": "原文書にdata-category属性に関する記述は存在しない"
+    }
+  ],
+  "_meta": {
+    "length": 500,
+    "format": "html",
+    "trial": 4,
+    "faithful_count": 1,
+    "hallucination_count": 4
+  }
+}

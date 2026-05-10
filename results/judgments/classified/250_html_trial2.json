@@ -1,0 +1,21 @@
+{
+  "file": "250_html_trial2.json",
+  "types": [
+    "business",
+    "business",
+    "structural",
+    "structural",
+    "business",
+    "structural",
+    "structural"
+  ],
+  "claims": [
+    "プレゼンス状態遷移図 (SVG) が含まれる",
+    "ロール階層図 (SVG): オーナー > 管理者 > メンバー",
+    "ドキュメント言語: lang=\"ja\"、文字コード UTF-8、レスポンシブviewport指定あり",
+    "各 <section> には data-category 属性が付与されており、カテゴリは overview / functional / nfr / tech / security の5種類",
+    "図 (SVG): プレゼンス状態遷移図、ロール階層図 の2点を含む",
+    "外部スタイルシート ./styles.css を参照 (Linkr 要件定義書 共通スタイル)",
+    "タイトルに (Extended) を含む requirements.html ファイルである"
+  ]
+}

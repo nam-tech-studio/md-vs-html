@@ -1,0 +1,73 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "文書タイトルは「チャットツール『Linkr』要件定義書 (Standard)」である",
+      "evidence_in_source": "チャットツール「Linkr」要件定義書 (Standard)"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "html lang=\"ja\" が指定されている",
+      "reason": "原文書(Markdown)にはHTML属性の記述はない"
+    },
+    {
+      "claim": "文字コードは UTF-8 である",
+      "reason": "原文書に文字コードの記述はない"
+    },
+    {
+      "claim": "ビューポート設定がある",
+      "reason": "原文書にビューポート設定の記述はない"
+    },
+    {
+      "claim": "外部スタイル ./styles.css をリンクしている",
+      "reason": "原文書に外部スタイルシートの記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図(SVG)が存在する",
+      "reason": "原文書にSVG図の記述はない"
+    },
+    {
+      "claim": "オンライン状態は緑系、退席中は黄系、オフラインは灰系で表現される",
+      "reason": "原文書に色指定の記述はない"
+    },
+    {
+      "claim": "オンライン→退席中の矢印は実線である",
+      "reason": "原文書に矢印の線種の記述はない"
+    },
+    {
+      "claim": "退席中→オフラインの遷移は破線(stroke-dasharray=\"4 3\")である",
+      "reason": "原文書に破線・SVG属性の記述はない"
+    },
+    {
+      "claim": "図キャプション「プレゼンス状態(オンライン / 退席中 / オフライン)と『10分間無操作で退席中』の自動遷移」が付与されている",
+      "reason": "原文書に図キャプションの記述はない"
+    },
+    {
+      "claim": "各リスト項目・表の行・定義項目に data-category 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "data-category の分類値として user/workspace/presence/channel/message/mention/dm/security/search/notification/nfr/tech/warning が存在する",
+      "reason": "原文書に分類タグの記述はない"
+    },
+    {
+      "claim": "各 <section> に id と aria-labelledby が設定されている",
+      "reason": "原文書にHTMLのaria属性の記述はない"
+    },
+    {
+      "claim": "SVGに role=\"img\"、aria-label=\"プレゼンス状態遷移図\"、<figcaption> が付与されている",
+      "reason": "原文書にrole/aria-label/figcaptionの記述はない"
+    },
+    {
+      "claim": "各表に <caption>、<th scope=\"col\"> / <th scope=\"row\"> によるスコープ宣言がある",
+      "reason": "原文書にHTML表のスコープ宣言の記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 100,
+    "format": "html",
+    "trial": 1,
+    "faithful_count": 1,
+    "hallucination_count": 14
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "文書名はチャットツール「Linkr」要件定義書 (Core) である",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Core)"
+    },
+    {
+      "claim": "Linkrは社内コミュニケーション用のチャットツールである",
+      "evidence_in_source": "社内コミュニケーション用のチャットツール"
+    },
+    {
+      "claim": "本書はコア機能のみを定義する",
+      "evidence_in_source": "本書はコア機能のみを定義する"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "要件定義書は全55行・7章構成である",
+      "reason": "原文書に行数・章数の総数についての明示的記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 50,
+    "format": "md",
+    "trial": 2,
+    "faithful_count": 3,
+    "hallucination_count": 1
+  }
+}

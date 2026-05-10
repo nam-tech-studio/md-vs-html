@@ -1,0 +1,11 @@
+{
+  "faithful_extras": [],
+  "hallucinations": [],
+  "_meta": {
+    "length": 250,
+    "format": "md",
+    "trial": 4,
+    "faithful_count": 0,
+    "hallucination_count": 0
+  }
+}

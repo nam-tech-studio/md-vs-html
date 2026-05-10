@@ -1,0 +1,41 @@
+{
+  "file": "50_html_trial1.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "business",
+    "business",
+    "business",
+    "business",
+    "business",
+    "structural",
+    "structural",
+    "structural",
+    "business",
+    "structural",
+    "structural"
+  ],
+  "claims": [
+    "言語は日本語 (<html lang=\"ja\">) である",
+    "文字コードはUTF-8である",
+    "ビューポートは width=device-width, initial-scale=1.0 である",
+    "外部スタイルシートは ./styles.css である",
+    "機能要件には data-category=\"functional\" が付与されている",
+    "SVGダイアグラムが aria-label=\"ユーザー・ワークスペース・サブドメインの関係図\" を持つ",
+    "図のタイトルは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」である",
+    "図の構成要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」のボックスがある",
+    "ユーザーから2つのワークスペースに線が引かれ、各ワークスペースからサブドメイン要素に線が結ばれる",
+    "figcapcionは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」である",
+    "表キャプション「チャネル種別と閲覧・参加範囲」が存在する",
+    "警告は data-category=\"warning\" で示される",
+    "セキュリティ要件は data-category=\"security\" で示される",
+    "非機能要件は data-category=\"nfr\" で示される",
+    "表キャプション「非機能要件一覧」が存在する",
+    "技術スタック制約は data-category=\"tech\" で示される",
+    "技術スタックは定義リスト形式で記述される"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "HTMLはlang=\"ja\"でstyles.cssを外部参照",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "各sectionはdata-category属性で分類",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "章番号は1〜34だが本文中の出現順は1〜23 → 33 → 34 → 24〜32",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "図(SVG)が2点: ロール階層図(§4)、ワークフロー構造図(§17)",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "表が複数: 契約プラン比較、検索フィルタ、ワークフロートリガー/ステップ、監査ログ保持期間、非機能要件",
+      "evidence_in_source": ""
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 500,
+    "format": "html",
+    "trial": 2,
+    "faithful_count": 5,
+    "hallucination_count": 0
+  }
+}

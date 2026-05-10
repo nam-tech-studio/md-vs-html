@@ -1,0 +1,24 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "文書タイトルは「チャットツール『Linkr』要件定義書 (Core)」である",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Core)"
+    },
+    {
+      "claim": "本書はコア機能のみを定義する文書である",
+      "evidence_in_source": "本書はコア機能のみを定義する。"
+    },
+    {
+      "claim": "用途は社内コミュニケーション用のチャットツール",
+      "evidence_in_source": "社内コミュニケーション用のチャットツール"
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 50,
+    "format": "md",
+    "trial": 1,
+    "faithful_count": 3,
+    "hallucination_count": 0
+  }
+}

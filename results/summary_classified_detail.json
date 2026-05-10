@@ -1,0 +1,496 @@
+[
+  {
+    "length": 100,
+    "format": "html",
+    "trial": 2,
+    "covered": 69,
+    "faithful": 0,
+    "structural_meta_observations": 27,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trial": 1,
+    "covered": 69,
+    "faithful": 1,
+    "structural_meta_observations": 12,
+    "business_hallucinations": 2,
+    "business_hallucination_rate": 0.027777777777777776,
+    "biz_examples": [
+      "図キャプション「プレゼンス状態(オンライン / 退席中 / オフライン)と『10分間無操作で退席中』の自動遷移」が付与されている",
+      "data-category の分類値として user/workspace/presence/channel/message/mention/dm/security/search/notification/nfr/tech/warning が存在する"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trial": 3,
+    "covered": 69,
+    "faithful": 1,
+    "structural_meta_observations": 13,
+    "business_hallucinations": 6,
+    "business_hallucination_rate": 0.07894736842105263,
+    "biz_examples": [
+      "文書タイトルは「チャットツール「Linkr」要件定義書 (Standard)」である",
+      "オンライン→退席中の矢印は実線で「10分無操作」のラベルが付く",
+      "図のキャプションは「プレゼンス状態 (オンライン / 退席中 / オフライン) と「10分間無操作で退席中」の自動遷移」",
+      "data-categoryの値にuser, workspace, presence, channel, message, mention, dm, search, notification, nfr, tech, security, warningが含まれる",
+      "表 (<table>) は5つあり、チャネル種別・検索フィルタ・通知レベル・非機能要件・データストアの一覧である"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trial": 4,
+    "covered": 69,
+    "faithful": 0,
+    "structural_meta_observations": 11,
+    "business_hallucinations": 3,
+    "business_hallucination_rate": 0.041666666666666664,
+    "biz_examples": [
+      "文書タイトルは「チャットツール「Linkr」要件定義書 (Standard)」である",
+      "「オンライン → 退席中」への遷移ラベルは「10分無操作」(実線矢印)",
+      "figcaptionは「プレゼンス状態 (オンライン / 退席中 / オフライン) と「10分間無操作で退席中」の自動遷移」"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trial": 1,
+    "covered": 69,
+    "faithful": 3,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trial": 2,
+    "covered": 69,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trial": 3,
+    "covered": 69,
+    "faithful": 2,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trial": 4,
+    "covered": 69,
+    "faithful": 3,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trial": 5,
+    "covered": 69,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trial": 1,
+    "covered": 160,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 2,
+    "business_hallucination_rate": 0.012345679012345678,
+    "biz_examples": [
+      "プレゼンス状態遷移図 (オンライン → 退席中 → オフライン、10分無操作で遷移) が記載されている",
+      "ロール階層は「オーナー > 管理者 > メンバー」の図がある"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trial": 5,
+    "covered": 69,
+    "faithful": 0,
+    "structural_meta_observations": 38,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trial": 3,
+    "covered": 160,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 2,
+    "business_hallucination_rate": 0.012345679012345678,
+    "biz_examples": [
+      "図: プレゼンス状態遷移図 (オンライン → 退席中 → オフライン、10分無操作で退席中へ遷移)",
+      "図: ロール階層 (オーナー > 管理者 > メンバー)"
+    ]
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trial": 2,
+    "covered": 160,
+    "faithful": 1,
+    "structural_meta_observations": 4,
+    "business_hallucinations": 3,
+    "business_hallucination_rate": 0.018292682926829267,
+    "biz_examples": [
+      "プレゼンス状態遷移図 (SVG) が含まれる",
+      "ロール階層図 (SVG): オーナー > 管理者 > メンバー",
+      "図 (SVG): プレゼンス状態遷移図、ロール階層図 の2点を含む"
+    ]
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trial": 5,
+    "covered": 160,
+    "faithful": 5,
+    "structural_meta_observations": 3,
+    "business_hallucinations": 1,
+    "business_hallucination_rate": 0.006024096385542169,
+    "biz_examples": [
+      "第2章と第3章にSVG図表 (プレゼンス状態遷移図、ロール階層図) が含まれる"
+    ]
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trial": 1,
+    "covered": 160,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trial": 2,
+    "covered": 160,
+    "faithful": 1,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trial": 3,
+    "covered": 160,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trial": 4,
+    "covered": 160,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trial": 5,
+    "covered": 160,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trial": 4,
+    "covered": 160,
+    "faithful": 2,
+    "structural_meta_observations": 4,
+    "business_hallucinations": 1,
+    "business_hallucination_rate": 0.006134969325153374,
+    "biz_examples": [
+      "ロール階層図が存在する (§3, オーナー > 管理者 > メンバー)"
+    ]
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trial": 2,
+    "covered": 303,
+    "faithful": 5,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trial": 1,
+    "covered": 303,
+    "faithful": 2,
+    "structural_meta_observations": 4,
+    "business_hallucinations": 2,
+    "business_hallucination_rate": 0.006514657980456026,
+    "biz_examples": [
+      "ロール階層図(SVG): オーナー > 管理者 > メンバー、別ロールとしてゲスト(特定チャネルのみ)",
+      "ワークフロー構造図(SVG): トリガー → ステップ → アクション"
+    ]
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trial": 3,
+    "covered": 303,
+    "faithful": 1,
+    "structural_meta_observations": 5,
+    "business_hallucinations": 1,
+    "business_hallucination_rate": 0.003278688524590164,
+    "biz_examples": [
+      "ロール階層図としてオーナー > 管理者 > メンバー、別ロールとしてゲストが図示されている"
+    ]
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trial": 5,
+    "covered": 303,
+    "faithful": 2,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trial": 1,
+    "covered": 302,
+    "faithful": 2,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trial": 2,
+    "covered": 303,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trial": 3,
+    "covered": 303,
+    "faithful": 1,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 1,
+    "business_hallucination_rate": 0.003278688524590164,
+    "biz_examples": [
+      "欠番 (35番台以降や、章を入れ替える根拠) は本書には書かれていない"
+    ]
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trial": 4,
+    "covered": 303,
+    "faithful": 2,
+    "structural_meta_observations": 1,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trial": 5,
+    "covered": 303,
+    "faithful": 0,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trial": 4,
+    "covered": 303,
+    "faithful": 1,
+    "structural_meta_observations": 2,
+    "business_hallucinations": 2,
+    "business_hallucination_rate": 0.006535947712418301,
+    "biz_examples": [
+      "セクション4にロール階層図(オーナー>管理者>メンバー、別ロールとしてゲスト)がインラインSVGで埋め込まれている",
+      "セクション17にワークフロー構造図(トリガー→ステップ→アクション)がインラインSVGで埋め込まれている"
+    ]
+  },
+  {
+    "length": 50,
+    "format": "html",
+    "trial": 1,
+    "covered": 41,
+    "faithful": 4,
+    "structural_meta_observations": 11,
+    "business_hallucinations": 6,
+    "business_hallucination_rate": 0.11764705882352941,
+    "biz_examples": [
+      "図のタイトルは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」である",
+      "図の構成要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」のボックスがある",
+      "ユーザーから2つのワークスペースに線が引かれ、各ワークスペースからサブドメイン要素に線が結ばれる",
+      "figcapcionは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」である",
+      "表キャプション「チャネル種別と閲覧・参加範囲」が存在する"
+    ]
+  },
+  {
+    "length": 50,
+    "format": "html",
+    "trial": 2,
+    "covered": 41,
+    "faithful": 2,
+    "structural_meta_observations": 14,
+    "business_hallucinations": 4,
+    "business_hallucination_rate": 0.0851063829787234,
+    "biz_examples": [
+      "図のラベルは「ユーザー・ワークスペース・サブドメインの関係図」",
+      "図のタイトルテキストは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」",
+      "図中の要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」が存在する",
+      "図のキャプションは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」"
+    ]
+  },
+  {
+    "length": 50,
+    "format": "html",
+    "trial": 4,
+    "covered": 41,
+    "faithful": 1,
+    "structural_meta_observations": 22,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 50,
+    "format": "html",
+    "trial": 3,
+    "covered": 41,
+    "faithful": 1,
+    "structural_meta_observations": 25,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trial": 1,
+    "covered": 41,
+    "faithful": 3,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 50,
+    "format": "html",
+    "trial": 5,
+    "covered": 41,
+    "faithful": 0,
+    "structural_meta_observations": 19,
+    "business_hallucinations": 7,
+    "business_hallucination_rate": 0.14583333333333334,
+    "biz_examples": [
+      "図のaria-labelは「ユーザー・ワークスペース・サブドメインの関係図」である",
+      "図のtitleは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」である",
+      "図示要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」と結ぶ線がある",
+      "figcaptionは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」である",
+      "表のキャプションは「チャネル種別と閲覧・参加範囲」である"
+    ]
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trial": 3,
+    "covered": 41,
+    "faithful": 1,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trial": 4,
+    "covered": 41,
+    "faithful": 3,
+    "structural_meta_observations": 0,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trial": 2,
+    "covered": 41,
+    "faithful": 3,
+    "structural_meta_observations": 1,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trial": 5,
+    "covered": 41,
+    "faithful": 1,
+    "structural_meta_observations": 1,
+    "business_hallucinations": 0,
+    "business_hallucination_rate": 0.0,
+    "biz_examples": []
+  }
+]

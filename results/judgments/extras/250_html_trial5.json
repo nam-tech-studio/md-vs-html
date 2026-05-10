@@ -1,0 +1,49 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "ドキュメントの言語はja、文字コードはUTF-8",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "外部CSS ./styles.css を参照",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "各セクションにdata-category属性 (overview/functional/nfr/tech/security) でカテゴリ分類のメタ情報が付与",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "第2章と第3章には説明用のSVG図表 (プレゼンス状態遷移図、ロール階層図) が含まれている",
+      "evidence_in_source": ""
+    },
+    {
+      "claim": "タイトルは「チャットツール「Linkr」要件定義書 (Extended)」",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Extended)"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "ドキュメントの言語はja、文字コードはUTF-8と指定されている",
+      "reason": "原文書(Markdown)には言語・文字コードの記述はない"
+    },
+    {
+      "claim": "外部CSS ./styles.css を参照している",
+      "reason": "原文書(Markdown)にはスタイルシート参照の記述はない"
+    },
+    {
+      "claim": "各セクションにdata-category属性でカテゴリ分類のメタ情報が付与されている",
+      "reason": "原文書にdata-category属性に関する記述はない"
+    },
+    {
+      "claim": "第2章と第3章にSVG図表 (プレゼンス状態遷移図、ロール階層図) が含まれる",
+      "reason": "原文書にSVG図やプレゼンス状態遷移図・ロール階層図の記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 250,
+    "format": "html",
+    "trial": 5,
+    "faithful_count": 5,
+    "hallucination_count": 4
+  }
+}

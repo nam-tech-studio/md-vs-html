@@ -1,0 +1,15 @@
+{
+  "file": "250_html_trial5.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "business"
+  ],
+  "claims": [
+    "ドキュメントの言語はja、文字コードはUTF-8と指定されている",
+    "外部CSS ./styles.css を参照している",
+    "各セクションにdata-category属性でカテゴリ分類のメタ情報が付与されている",
+    "第2章と第3章にSVG図表 (プレゼンス状態遷移図、ロール階層図) が含まれる"
+  ]
+}

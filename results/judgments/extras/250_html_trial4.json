@@ -1,0 +1,41 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "文書タイトルはチャットツール「Linkr」要件定義書 (Extended)",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Extended)"
+    },
+    {
+      "claim": "本書はコア機能、コミュニケーション支援機能、および拡張機能を定義する",
+      "evidence_in_source": "本書はコア機能、コミュニケーション支援機能、および拡張機能を定義する"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "言語は日本語 (lang=\"ja\")",
+      "reason": "原文書はMarkdownでありHTMLのlang属性に関する記述はない"
+    },
+    {
+      "claim": "スタイルシートとして ./styles.css を参照",
+      "reason": "原文書にスタイルシート参照に関する記述はない"
+    },
+    {
+      "claim": "各セクションは data-category 属性 (overview / functional / nfr / tech / security) で分類されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図が存在する (§2)",
+      "reason": "原文書に図の記述や状態遷移図の言及はない"
+    },
+    {
+      "claim": "ロール階層図が存在する (§3, オーナー > 管理者 > メンバー)",
+      "reason": "原文書に図やロール階層図の言及はない"
+    }
+  ],
+  "_meta": {
+    "length": 250,
+    "format": "html",
+    "trial": 4,
+    "faithful_count": 2,
+    "hallucination_count": 5
+  }
+}

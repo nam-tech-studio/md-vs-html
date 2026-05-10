@@ -1,0 +1,170 @@
+[01:12:28] Total judge jobs: 1 | parallel=1
+[01:12:44] [done cov] 50_md_trial1 15s covered=41/41
+[01:12:44] All judge jobs done.
+[01:12:54] Total judge jobs: 1 | parallel=1
+[01:13:03] [done ext] 50_md_trial1 9s faithful=3 hallu=0
+[01:13:03] All judge jobs done.
+[01:13:12] Total judge jobs: 80 | parallel=6
+[01:13:12] [skip cov] 50_md_trial1
+[01:13:26] [done cov] 50_md_trial5 14s covered=41/41
+[01:13:27] [done cov] 50_html_trial1 14s covered=41/41
+[01:13:27] [done cov] 50_md_trial2 14s covered=41/41
+[01:13:28] [done cov] 50_md_trial3 15s covered=41/41
+[01:13:28] [done cov] 50_html_trial2 15s covered=41/41
+[01:13:30] [done cov] 50_md_trial4 17s covered=41/41
+[01:13:41] [done cov] 50_html_trial3 14s covered=41/41
+[01:13:42] [done cov] 50_html_trial5 14s covered=41/41
+[01:13:46] [done cov] 50_html_trial4 18s covered=41/41
+[01:13:54] [done cov] 100_md_trial1 26s covered=69/69
+[01:13:59] [done cov] 100_md_trial3 28s covered=69/69
+[01:13:59] [done cov] 100_md_trial2 31s covered=69/69
+[01:14:09] [done cov] 100_md_trial5 26s covered=69/69
+[01:14:10] [done cov] 100_md_trial4 28s covered=69/69
+[01:14:15] [done cov] 100_html_trial1 29s covered=69/69
+[01:14:23] [done cov] 100_html_trial2 28s covered=69/69
+[01:14:29] [done cov] 100_html_trial4 29s covered=69/69
+[01:14:29] [done cov] 100_html_trial3 30s covered=69/69
+[01:14:37] [done cov] 100_html_trial5 28s covered=69/69
+[01:15:17] [done cov] 250_md_trial1 67s covered=160/160
+[01:15:25] [done cov] 250_md_trial2 69s covered=160/160
+[01:15:30] [done cov] 250_md_trial3 66s covered=160/160
+[01:15:41] [done cov] 250_md_trial4 72s covered=160/160
+[01:15:44] [done cov] 250_md_trial5 75s covered=160/160
+[01:15:45] [FAIL cov] 250_html_trial5 4s RuntimeError: claude exited 1: 
+[01:15:48] [FAIL cov] 500_md_trial1 3s RuntimeError: claude exited 1: 
+[01:15:50] [FAIL cov] 500_md_trial2 4s RuntimeError: claude exited 1: 
+[01:15:50] [done cov] 250_html_trial1 73s covered=160/160
+[01:15:52] [FAIL cov] 500_md_trial3 4s RuntimeError: claude exited 1: 
+[01:15:55] [FAIL cov] 500_md_trial4 4s RuntimeError: claude exited 1: 
+[01:15:55] [FAIL cov] 500_md_trial5 4s RuntimeError: claude exited 1: 
+[01:15:57] [FAIL cov] 500_html_trial1 4s RuntimeError: claude exited 1: 
+[01:15:59] [FAIL cov] 500_html_trial3 4s RuntimeError: claude exited 1: 
+[01:15:59] [FAIL cov] 500_html_trial2 4s RuntimeError: claude exited 1: 
+[01:15:59] [skip ext] 50_md_trial1
+[01:16:02] [FAIL cov] 500_html_trial4 4s RuntimeError: claude exited 1: 
+[01:16:03] [FAIL ext] 50_md_trial2 3s RuntimeError: claude exited 1: 
+[01:16:04] [FAIL cov] 500_html_trial5 4s RuntimeError: claude exited 1: 
+[01:16:06] [FAIL ext] 50_md_trial3 3s RuntimeError: claude exited 1: 
+[01:16:08] [FAIL ext] 50_md_trial4 4s RuntimeError: claude exited 1: 
+[01:16:08] [FAIL ext] 50_md_trial5 4s RuntimeError: claude exited 1: 
+[01:16:10] [FAIL ext] 50_html_trial1 4s RuntimeError: claude exited 1: 
+[01:16:12] [FAIL ext] 50_html_trial3 4s RuntimeError: claude exited 1: 
+[01:16:13] [FAIL ext] 50_html_trial2 4s RuntimeError: claude exited 1: 
+[01:16:14] [FAIL ext] 50_html_trial4 4s RuntimeError: claude exited 1: 
+[01:16:17] [FAIL ext] 100_md_trial1 4s RuntimeError: claude exited 1: 
+[01:16:17] [FAIL ext] 50_html_trial5 4s RuntimeError: claude exited 1: 
+[01:16:19] [FAIL ext] 100_md_trial2 4s RuntimeError: claude exited 1: 
+[01:16:20] [FAIL ext] 100_md_trial4 3s RuntimeError: claude exited 1: 
+[01:16:22] [FAIL ext] 100_md_trial3 4s RuntimeError: claude exited 1: 
+[01:16:23] [FAIL ext] 100_md_trial5 4s RuntimeError: claude exited 1: 
+[01:16:25] [FAIL ext] 100_html_trial1 4s RuntimeError: claude exited 1: 
+[01:16:25] [done cov] 250_html_trial2 68s covered=160/160
+[01:16:26] [FAIL ext] 100_html_trial2 4s RuntimeError: claude exited 1: 
+[01:16:28] [FAIL ext] 100_html_trial3 4s RuntimeError: claude exited 1: 
+[01:16:29] [FAIL ext] 100_html_trial4 4s RuntimeError: claude exited 1: 
+[01:16:29] [FAIL ext] 100_html_trial5 4s RuntimeError: claude exited 1: 
+[01:16:30] [FAIL ext] 250_md_trial1 3s RuntimeError: claude exited 1: 
+[01:16:32] [FAIL ext] 250_md_trial2 4s RuntimeError: claude exited 1: 
+[01:16:32] [done cov] 250_html_trial3 67s covered=160/160
+[01:16:33] [FAIL ext] 250_md_trial3 4s RuntimeError: claude exited 1: 
+[01:16:33] [FAIL ext] 250_md_trial4 4s RuntimeError: claude exited 1: 
+[01:16:34] [FAIL ext] 250_md_trial5 3s RuntimeError: claude exited 1: 
+[01:16:37] [FAIL ext] 250_html_trial2 4s RuntimeError: claude exited 1: 
+[01:16:37] [FAIL ext] 250_html_trial1 4s RuntimeError: claude exited 1: 
+[01:16:37] [done cov] 250_html_trial4 66s covered=160/160
+[01:16:38] [FAIL ext] 250_html_trial3 4s RuntimeError: claude exited 1: 
+[01:16:39] [FAIL ext] 250_html_trial4 5s RuntimeError: claude exited 1: 
+[01:16:39] [FAIL ext] 250_html_trial5 5s RuntimeError: claude exited 1: 
+[01:16:41] [FAIL ext] 500_md_trial1 4s RuntimeError: claude exited 1: 
+[01:16:41] [FAIL ext] 500_md_trial2 4s RuntimeError: claude exited 1: 
+[01:16:41] [FAIL ext] 500_md_trial4 3s RuntimeError: claude exited 1: 
+[01:16:42] [FAIL ext] 500_md_trial3 4s RuntimeError: claude exited 1: 
+[01:16:43] [FAIL ext] 500_html_trial1 4s RuntimeError: claude exited 1: 
+[01:16:43] [FAIL ext] 500_md_trial5 4s RuntimeError: claude exited 1: 
+[01:16:45] [FAIL ext] 500_html_trial3 4s RuntimeError: claude exited 1: 
+[01:16:46] [FAIL ext] 500_html_trial2 5s RuntimeError: claude exited 1: 
+[01:16:46] [FAIL ext] 500_html_trial5 4s RuntimeError: claude exited 1: 
+[01:16:46] [FAIL ext] 500_html_trial4 4s RuntimeError: claude exited 1: 
+[01:16:46] All judge jobs done.
+[07:39:21] Total judge jobs: 80 | parallel=2
+[07:39:21] [skip cov] 50_md_trial1
+[07:39:21] [skip cov] 50_md_trial2
+[07:39:21] [skip cov] 50_md_trial3
+[07:39:21] [skip cov] 50_md_trial4
+[07:39:21] [skip cov] 50_md_trial5
+[07:39:21] [skip cov] 50_html_trial1
+[07:39:21] [skip cov] 50_html_trial2
+[07:39:21] [skip cov] 50_html_trial4
+[07:39:21] [skip cov] 50_html_trial3
+[07:39:21] [skip cov] 50_html_trial5
+[07:39:21] [skip cov] 100_md_trial2
+[07:39:21] [skip cov] 100_md_trial1
+[07:39:21] [skip cov] 100_md_trial3
+[07:39:21] [skip cov] 100_md_trial4
+[07:39:21] [skip cov] 100_md_trial5
+[07:39:21] [skip cov] 100_html_trial2
+[07:39:21] [skip cov] 100_html_trial1
+[07:39:21] [skip cov] 100_html_trial3
+[07:39:21] [skip cov] 100_html_trial4
+[07:39:21] [skip cov] 250_md_trial1
+[07:39:21] [skip cov] 100_html_trial5
+[07:39:21] [skip cov] 250_md_trial2
+[07:39:21] [skip cov] 250_md_trial4
+[07:39:21] [skip cov] 250_md_trial3
+[07:39:21] [skip cov] 250_md_trial5
+[07:39:21] [skip cov] 250_html_trial2
+[07:39:21] [skip cov] 250_html_trial1
+[07:39:21] [skip cov] 250_html_trial3
+[07:39:21] [skip cov] 250_html_trial4
+[07:40:28] [done cov] 250_html_trial5 66s covered=160/160
+[07:42:02] [done cov] 500_md_trial1 161s covered=302/303
+[07:44:32] [done cov] 500_md_trial2 244s covered=303/303
+[07:45:40] [done cov] 500_md_trial3 217s covered=303/303
+[07:47:10] [done cov] 500_md_trial4 157s covered=303/303
+[07:48:25] [done cov] 500_md_trial5 165s covered=303/303
+[08:10:05] [done cov] 500_html_trial2 1299s covered=303/303
+[08:10:09] [done cov] 500_html_trial1 1379s covered=303/303
+[08:12:41] [done cov] 500_html_trial3 156s covered=303/303
+[08:12:53] [done cov] 500_html_trial4 163s covered=303/303
+[08:12:53] [skip ext] 50_md_trial1
+[08:13:01] [done ext] 50_md_trial2 7s faithful=3 hallu=1
+[08:13:08] [done ext] 50_md_trial3 7s faithful=1 hallu=0
+[08:13:15] [done ext] 50_md_trial4 7s faithful=3 hallu=0
+[08:13:25] [done ext] 50_md_trial5 10s faithful=1 hallu=1
+[08:20:31] [done ext] 50_html_trial1 425s faithful=4 hallu=17
+[08:20:51] [done ext] 50_html_trial2 20s faithful=2 hallu=18
+[08:21:15] [done ext] 50_html_trial3 24s faithful=1 hallu=25
+[08:21:39] [done ext] 50_html_trial4 23s faithful=1 hallu=22
+[08:21:39] [done cov] 500_html_trial5 538s covered=303/303
+[08:21:47] [done ext] 100_md_trial1 7s faithful=3 hallu=0
+[08:21:54] [done ext] 100_md_trial2 6s faithful=0 hallu=0
+[08:22:01] [done ext] 100_md_trial3 7s faithful=2 hallu=0
+[08:22:03] [done ext] 50_html_trial5 24s faithful=0 hallu=26
+[08:22:08] [done ext] 100_md_trial5 5s faithful=0 hallu=0
+[08:22:13] [done ext] 100_md_trial4 11s faithful=3 hallu=0
+[08:22:27] [done ext] 100_html_trial1 19s faithful=1 hallu=14
+[08:22:38] [done ext] 100_html_trial2 25s faithful=0 hallu=27
+[08:22:52] [done ext] 100_html_trial3 24s faithful=1 hallu=19
+[08:22:55] [done ext] 100_html_trial4 16s faithful=0 hallu=14
+[08:23:04] [done ext] 250_md_trial1 8s faithful=0 hallu=0
+[08:23:12] [done ext] 250_md_trial2 8s faithful=1 hallu=0
+[08:23:19] [done ext] 250_md_trial3 7s faithful=0 hallu=0
+[08:23:25] [done ext] 250_md_trial4 5s faithful=0 hallu=0
+[08:23:25] [done ext] 100_html_trial5 32s faithful=0 hallu=38
+[08:23:31] [done ext] 250_md_trial5 6s faithful=0 hallu=0
+[08:23:35] [done ext] 250_html_trial1 10s faithful=0 hallu=2
+[08:23:44] [done ext] 250_html_trial3 8s faithful=0 hallu=2
+[08:23:47] [done ext] 250_html_trial2 16s faithful=1 hallu=7
+[08:23:58] [done ext] 250_html_trial4 13s faithful=2 hallu=5
+[08:24:01] [done ext] 250_html_trial5 13s faithful=5 hallu=4
+[08:24:07] [done ext] 500_md_trial2 5s faithful=0 hallu=0
+[08:24:08] [done ext] 500_md_trial1 10s faithful=2 hallu=0
+[08:24:17] [done ext] 500_md_trial3 9s faithful=1 hallu=1
+[08:24:20] [done ext] 500_md_trial4 11s faithful=2 hallu=1
+[08:24:25] [done ext] 500_md_trial5 7s faithful=0 hallu=0
+[08:24:39] [done ext] 500_html_trial1 18s faithful=2 hallu=6
+[08:24:43] [done ext] 500_html_trial2 18s faithful=5 hallu=0
+[08:25:15] [done ext] 500_html_trial3 36s faithful=1 hallu=6
+[08:25:16] [done ext] 500_html_trial4 32s faithful=1 hallu=4
+[08:25:26] [done ext] 500_html_trial5 11s faithful=2 hallu=0
+[08:25:26] All judge jobs done.

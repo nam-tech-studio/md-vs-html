@@ -1,0 +1,19 @@
+{
+  "file": "500_html_trial3.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "business",
+    "structural",
+    "structural"
+  ],
+  "claims": [
+    "各セクションにはdata-category属性が付与されている",
+    "カテゴリ分類はoverview, account, workspace, roles, security, channel, message, notification, extension, tech, support, nfrの12種類",
+    "図(figure)は2点存在する(ロール階層図、ワークフロー構造図)",
+    "ロール階層図としてオーナー > 管理者 > メンバー、別ロールとしてゲストが図示されている",
+    "ワークフロー構造図(トリガー → ステップ → アクション)が図として存在する",
+    "HTML上の出現順という記述"
+  ]
+}

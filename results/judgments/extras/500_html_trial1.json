@@ -1,0 +1,45 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "本書はコア機能、コミュニケーション支援機能、拡張機能、エンタープライズ向け機能を定義する",
+      "evidence_in_source": "本書はコア機能、コミュニケーション支援機能、拡張機能、およびエンタープライズ向けの管理・統合・コンプライアンス機能を定義する"
+    },
+    {
+      "claim": "ドキュメントタイトルは「チャットツール「Linkr」要件定義書 (Enterprise)」",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Enterprise)"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "言語は lang=\"ja\"、文字コードUTF-8 (HTMLマークアップ属性として明記)",
+      "reason": "原文書はMarkdownでありHTMLのlang属性に関する記述はない"
+    },
+    {
+      "claim": "各セクションは data-category 属性でカテゴリ分類 (overview, account, workspace, roles, security, channel, message, notification, extension, tech, nfr, support)",
+      "reason": "原文書にdata-category属性やHTML構造に関する記述はない"
+    },
+    {
+      "claim": "セクション番号は1-34だが、本文中の出現順は 1〜23 → 33 → 34 → 24〜32 という非連続な順序で並んでいる",
+      "reason": "これは原文書の順序の観察であり原文書本文に明示的に記述されているメタ情報ではない"
+    },
+    {
+      "claim": "図表として、ロール階層図(SVG)、ワークフロー構造図(SVG)、契約プラン比較表、検索フィルタ表、監査ログ保持期間表、非機能要件表が掲載されている",
+      "reason": "原文書はMarkdownであり、SVGや表構造に関する明示的な記述はない"
+    },
+    {
+      "claim": "ロール階層図(SVG): オーナー > 管理者 > メンバー、別ロールとしてゲスト(特定チャネルのみ)",
+      "reason": "原文書にはSVGロール階層図の記述はない"
+    },
+    {
+      "claim": "ワークフロー構造図(SVG): トリガー → ステップ → アクション",
+      "reason": "原文書にはSVG構造図の記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 500,
+    "format": "html",
+    "trial": 1,
+    "faithful_count": 2,
+    "hallucination_count": 6
+  }
+}

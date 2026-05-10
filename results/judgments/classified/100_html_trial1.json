@@ -1,0 +1,35 @@
+{
+  "file": "100_html_trial1.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "business",
+    "structural",
+    "business",
+    "structural",
+    "structural",
+    "structural"
+  ],
+  "claims": [
+    "html lang=\"ja\" が指定されている",
+    "文字コードは UTF-8 である",
+    "ビューポート設定がある",
+    "外部スタイル ./styles.css をリンクしている",
+    "プレゼンス状態遷移図(SVG)が存在する",
+    "オンライン状態は緑系、退席中は黄系、オフラインは灰系で表現される",
+    "オンライン→退席中の矢印は実線である",
+    "退席中→オフラインの遷移は破線(stroke-dasharray=\"4 3\")である",
+    "図キャプション「プレゼンス状態(オンライン / 退席中 / オフライン)と『10分間無操作で退席中』の自動遷移」が付与されている",
+    "各リスト項目・表の行・定義項目に data-category 属性が付与されている",
+    "data-category の分類値として user/workspace/presence/channel/message/mention/dm/security/search/notification/nfr/tech/warning が存在する",
+    "各 <section> に id と aria-labelledby が設定されている",
+    "SVGに role=\"img\"、aria-label=\"プレゼンス状態遷移図\"、<figcaption> が付与されている",
+    "各表に <caption>、<th scope=\"col\"> / <th scope=\"row\"> によるスコープ宣言がある"
+  ]
+}

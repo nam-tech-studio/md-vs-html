@@ -1,0 +1,20 @@
+{
+  "faithful_extras": [],
+  "hallucinations": [
+    {
+      "claim": "図: プレゼンス状態遷移図 (オンライン → 退席中 → オフライン、10分無操作で退席中へ遷移)",
+      "reason": "原文書には図に関する記述は一切存在しない"
+    },
+    {
+      "claim": "図: ロール階層 (オーナー > 管理者 > メンバー)",
+      "reason": "原文書には図に関する記述は一切存在しない"
+    }
+  ],
+  "_meta": {
+    "length": 250,
+    "format": "html",
+    "trial": 3,
+    "faithful_count": 0,
+    "hallucination_count": 2
+  }
+}

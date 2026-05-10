@@ -1,0 +1,16 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "Linkrは本チャットツールの名称である",
+      "evidence_in_source": "チャットツール「Linkr」要件定義書 (Core)"
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 50,
+    "format": "md",
+    "trial": 3,
+    "faithful_count": 1,
+    "hallucination_count": 0
+  }
+}

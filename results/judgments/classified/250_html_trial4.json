@@ -1,0 +1,17 @@
+{
+  "file": "250_html_trial4.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "business"
+  ],
+  "claims": [
+    "言語は日本語 (lang=\"ja\")",
+    "スタイルシートとして ./styles.css を参照",
+    "各セクションは data-category 属性 (overview / functional / nfr / tech / security) で分類されている",
+    "プレゼンス状態遷移図が存在する (§2)",
+    "ロール階層図が存在する (§3, オーナー > 管理者 > メンバー)"
+  ]
+}

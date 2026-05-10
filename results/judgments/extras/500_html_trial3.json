@@ -1,0 +1,41 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "章番号は連続せず、23. モバイルアプリの後に33. ヘルプとサポートと34. 利用規約とプライバシーが現れ、その後24. アクセシビリティ以降が続く",
+      "evidence_in_source": "## 23. モバイルアプリ … ## 33. ヘルプとサポート … ## 34. 利用規約とプライバシー … ## 24. アクセシビリティ"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "各セクションにはdata-category属性が付与されている",
+      "reason": "原文はMarkdownでありdata-category属性に関する記述は存在しない"
+    },
+    {
+      "claim": "カテゴリ分類はoverview, account, workspace, roles, security, channel, message, notification, extension, tech, support, nfrの12種類",
+      "reason": "原文にカテゴリ名の列挙やそのような分類体系の記述はない"
+    },
+    {
+      "claim": "図(figure)は2点存在する(ロール階層図、ワークフロー構造図)",
+      "reason": "原文に図やfigure要素は存在せず、図の点数や種類への言及もない"
+    },
+    {
+      "claim": "ロール階層図としてオーナー > 管理者 > メンバー、別ロールとしてゲストが図示されている",
+      "reason": "原文にロール階層図という図表は存在しない"
+    },
+    {
+      "claim": "ワークフロー構造図(トリガー → ステップ → アクション)が図として存在する",
+      "reason": "原文ではテキストとして記述されているのみで、構造図という図表は存在しない"
+    },
+    {
+      "claim": "HTML上の出現順という記述",
+      "reason": "原文はMarkdownであり、HTMLという形式や出現順への言及はない"
+    }
+  ],
+  "_meta": {
+    "length": 500,
+    "format": "html",
+    "trial": 3,
+    "faithful_count": 1,
+    "hallucination_count": 6
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "文書名はチャットツール「Linkr」要件定義書 (Core)である",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Core)"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "requirements.mdは全55行である",
+      "reason": "原文書に行数の記載はない"
+    }
+  ],
+  "_meta": {
+    "length": 50,
+    "format": "md",
+    "trial": 5,
+    "faithful_count": 1,
+    "hallucination_count": 1
+  }
+}

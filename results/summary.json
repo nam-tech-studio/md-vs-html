@@ -1,0 +1,202 @@
+[
+  {
+    "length": 50,
+    "format": "html",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.33484390909019157,
+      "sd": 0.04390187581248764,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 1.6,
+      "sd": 1.3564659966250536,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 42.6,
+      "sd": 1.3564659966250536,
+      "n": 5
+    }
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.00909560723514212,
+      "sd": 0.011144592305268446,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 2.2,
+      "sd": 0.9797958971132712,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 43.2,
+      "sd": 0.9797958971132712,
+      "n": 5
+    }
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.23704293968903017,
+      "sd": 0.07222648271490176,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 0.4,
+      "sd": 0.48989794855663565,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 69.4,
+      "sd": 0.4898979485566356,
+      "n": 5
+    }
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 1.6,
+      "sd": 1.3564659966250536,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 70.6,
+      "sd": 1.3564659966250536,
+      "n": 5
+    }
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.0239933567010183,
+      "sd": 0.011127911831574026,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 1.6,
+      "sd": 1.8547236990991407,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 161.6,
+      "sd": 1.8547236990991407,
+      "n": 5
+    }
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 0.2,
+      "sd": 0.4,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 160.2,
+      "sd": 0.4,
+      "n": 5
+    }
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 1.0,
+      "sd": 0.0,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.010326891239659625,
+      "sd": 0.008743608670098775,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 2.2,
+      "sd": 1.469693845669907,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 305.2,
+      "sd": 1.469693845669907,
+      "n": 5
+    }
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trials": 5,
+    "coverage_rate": {
+      "mean": 0.9993399339933994,
+      "sd": 0.001320132013201336,
+      "n": 5
+    },
+    "hallucination_rate": {
+      "mean": 0.001309332476159863,
+      "sd": 0.001603601814697847,
+      "n": 5
+    },
+    "faithful_extras": {
+      "mean": 1,
+      "sd": 0.8944271909999159,
+      "n": 5
+    },
+    "total_signal": {
+      "mean": 303.8,
+      "sd": 0.7483314773547882,
+      "n": 5
+    }
+  }
+]

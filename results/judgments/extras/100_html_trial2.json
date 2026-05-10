@@ -1,0 +1,120 @@
+{
+  "faithful_extras": [],
+  "hallucinations": [
+    {
+      "claim": "言語は日本語 (<html lang=\"ja\">)",
+      "reason": "原文書はMarkdownでありHTML lang属性に関する記述はない"
+    },
+    {
+      "claim": "文字コードはUTF-8",
+      "reason": "原文書に文字コードの記述はない"
+    },
+    {
+      "claim": "ビューポートは width=device-width, initial-scale=1.0",
+      "reason": "原文書にビューポート設定の記述はない"
+    },
+    {
+      "claim": "外部スタイルシート ./styles.css を読み込む",
+      "reason": "原文書にスタイルシート参照の記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図がSVGで描かれる",
+      "reason": "原文書にSVG図や状態遷移図の記述はない"
+    },
+    {
+      "claim": "オンライン状態は塗り #e6f4ea / 枠 #34a853 の緑系",
+      "reason": "原文書に色指定の記述はない"
+    },
+    {
+      "claim": "退席中状態は塗り #fef7e0 / 枠 #fbbc04 の黄系",
+      "reason": "原文書に色指定の記述はない"
+    },
+    {
+      "claim": "オフライン状態は塗り #f1f3f4 / 枠 #9aa0a6 の灰系",
+      "reason": "原文書に色指定の記述はない"
+    },
+    {
+      "claim": "オンライン→退席中の遷移は実線矢印でラベル「10分無操作」",
+      "reason": "原文書に矢印・ラベル指定の記述はない"
+    },
+    {
+      "claim": "退席中→オフラインの遷移は破線矢印 (stroke-dasharray=\"4 3\") でラベルなし",
+      "reason": "原文書に該当記述はない"
+    },
+    {
+      "claim": "図のキャプションは「プレゼンス状態 (オンライン / 退席中 / オフライン) と『10分間無操作で退席中』の自動遷移」",
+      "reason": "原文書にキャプション文の記述はない"
+    },
+    {
+      "claim": "図のARIAラベルは「プレゼンス状態遷移図」",
+      "reason": "原文書にARIAラベルの記述はない"
+    },
+    {
+      "claim": "チャネル種別表のキャプションは「チャネル種別と閲覧範囲」",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "最後の管理者の警告には data-category=\"warning\" が付与される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "@channel/@hereの警告には data-category=\"warning\" が付与される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "DMセクションには data-category=\"security\" が付与される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "検索フィルタ表のキャプションは「利用可能な検索フィルタ」",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "通知レベル表のキャプションは「チャネル通知レベル」",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "非機能要件表のキャプションは「非機能要件一覧」",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "データストア表のキャプションは「データストア構成」",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "文書は<main>配下に11個の<section>を持つ",
+      "reason": "原文書にHTML構造の記述はない"
+    },
+    {
+      "claim": "各sectionはidとaria-labelledbyでアクセシビリティ対応",
+      "reason": "原文書にHTML属性の記述はない"
+    },
+    {
+      "claim": "data-category属性の値はuser/workspace/presence/channel/warning/message/mention/dm/security/search/notification/nfr/techのいずれか",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "表には<caption>、<thead>/<tbody>、scope=\"col\"/scope=\"row\"が用いられる",
+      "reason": "原文書にHTML表要素の記述はない"
+    },
+    {
+      "claim": "特殊メンションおよび技術スタック (10.1, 10.3) は<dl>/<dt>/<dd>の定義リストで記述される",
+      "reason": "原文書に定義リスト構造の記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図はインラインSVG (viewBox=\"0 0 480 140\"、role=\"img\") で実装",
+      "reason": "原文書にSVG実装詳細の記述はない"
+    },
+    {
+      "claim": "矢印は<marker id=\"arrow\">で定義される",
+      "reason": "原文書にmarker要素の記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 100,
+    "format": "html",
+    "trial": 2,
+    "faithful_count": 0,
+    "hallucination_count": 27
+  }
+}

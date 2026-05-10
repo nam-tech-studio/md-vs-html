@@ -1,0 +1,19 @@
+{
+  "file": "500_html_trial1.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "business",
+    "business"
+  ],
+  "claims": [
+    "言語は lang=\"ja\"、文字コードUTF-8 (HTMLマークアップ属性として明記)",
+    "各セクションは data-category 属性でカテゴリ分類 (overview, account, workspace, roles, security, channel, message, notification, extension, tech, nfr, support)",
+    "セクション番号は1-34だが、本文中の出現順は 1〜23 → 33 → 34 → 24〜32 という非連続な順序で並んでいる",
+    "図表として、ロール階層図(SVG)、ワークフロー構造図(SVG)、契約プラン比較表、検索フィルタ表、監査ログ保持期間表、非機能要件表が掲載されている",
+    "ロール階層図(SVG): オーナー > 管理者 > メンバー、別ロールとしてゲスト(特定チャネルのみ)",
+    "ワークフロー構造図(SVG): トリガー → ステップ → アクション"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "本書は要件定義書である",
+      "evidence_in_source": "チャットツール「Linkr」要件定義書 (Standard)"
+    },
+    {
+      "claim": "版はStandardである",
+      "evidence_in_source": "「Linkr」要件定義書 (Standard)"
+    },
+    {
+      "claim": "AWS東京リージョンのap-northeast-1である",
+      "evidence_in_source": "AWS東京リージョン (ap-northeast-1)"
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 100,
+    "format": "md",
+    "trial": 1,
+    "faithful_count": 3,
+    "hallucination_count": 0
+  }
+}

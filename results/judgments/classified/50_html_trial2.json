@@ -1,0 +1,43 @@
+{
+  "file": "50_html_trial2.json",
+  "types": [
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "business",
+    "business",
+    "business",
+    "business",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural",
+    "structural"
+  ],
+  "claims": [
+    "言語属性は lang=\"ja\"",
+    "メタ情報に charset=UTF-8 が指定されている",
+    "viewport=width=device-width, initial-scale=1.0 が指定されている",
+    "外部スタイルシート ./styles.css を参照している",
+    "機能要件には data-category=\"functional\" 属性が付与されている",
+    "図(SVG diagram)が存在する",
+    "図のラベルは「ユーザー・ワークスペース・サブドメインの関係図」",
+    "図のタイトルテキストは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」",
+    "図中の要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」が存在する",
+    "図のキャプションは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」",
+    "チャネル種別は表「チャネル種別と閲覧・参加範囲」として記述されている",
+    "警告に data-category=\"warning\" 属性が付与されている",
+    "セキュリティ要件に data-category=\"security\" 属性が付与されている",
+    "非機能要件は表「非機能要件一覧」として記述されている",
+    "非機能要件の全行に data-category=\"nfr\" 属性が付与されている",
+    "技術スタック制約に data-category=\"tech\" 属性が付与されている",
+    "各セクションは id 属性を持つ (overview, users-workspace, channels, messages, dm, nfr, tech-stack)",
+    "各セクションは aria-labelledby 属性を持つ"
+  ]
+}

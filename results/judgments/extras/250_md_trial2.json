@@ -1,0 +1,16 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "本書は「コア機能」「コミュニケーション支援機能」「拡張機能」を定義する",
+      "evidence_in_source": "本書はコア機能、コミュニケーション支援機能、および拡張機能を定義する"
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 250,
+    "format": "md",
+    "trial": 2,
+    "faithful_count": 1,
+    "hallucination_count": 0
+  }
+}

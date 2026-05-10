@@ -1,0 +1,164 @@
+{
+  "faithful_extras": [],
+  "hallucinations": [
+    {
+      "claim": "ファイル名が requirements.html で styles.css を参照する",
+      "reason": "原文書はMarkdown形式であり、HTMLファイル名やCSS参照の記述はない"
+    },
+    {
+      "claim": "言語は日本語 (<html lang=\"ja\">)",
+      "reason": "原文書にHTML lang属性の記述はない"
+    },
+    {
+      "claim": "文字コードはUTF-8",
+      "reason": "原文書に文字コードの明記はない"
+    },
+    {
+      "claim": "viewportはwidth=device-width, initial-scale=1.0",
+      "reason": "原文書にviewport設定の記述はない"
+    },
+    {
+      "claim": "ドキュメントタイトルは「チャットツール「Linkr」要件定義書 (Standard)」",
+      "reason": "原文書のH1見出しではあるが、<title>/<h1>というHTMLタグ指定の記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図のSVGが添付されている",
+      "reason": "原文書にSVG図や添付図の記述はない"
+    },
+    {
+      "claim": "プレゼンスのボックス配色 (オンライン緑系#e6f4ea/#34a853等)",
+      "reason": "原文書に配色指定の記述はない"
+    },
+    {
+      "claim": "「オンライン → 退席中」への矢印にラベル「10分無操作」",
+      "reason": "原文書に矢印・ラベルの記述はない"
+    },
+    {
+      "claim": "「退席中 → オフライン」への矢印は破線 (stroke-dasharray=\"4 3\")",
+      "reason": "原文書にSVG破線の記述はない"
+    },
+    {
+      "claim": "図キャプション「プレゼンス状態...の自動遷移」",
+      "reason": "原文書に図キャプションの記述はない"
+    },
+    {
+      "claim": "aria-label「プレゼンス状態遷移図」",
+      "reason": "原文書にaria-labelの記述はない"
+    },
+    {
+      "claim": "data-category属性で分類タグが付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "分類タグの値一覧 (user, workspace, presence等)",
+      "reason": "原文書にカテゴリ分類タグの値リスト記述はない"
+    },
+    {
+      "claim": "styles.css のコメント「Linkr 要件定義書 共通スタイル」",
+      "reason": "原文書にCSSファイルやコメントの記述はない"
+    },
+    {
+      "claim": "CSSカスタムプロパティの色定義 (--c-text:#1a1a1a等)",
+      "reason": "原文書にCSS変数の記述はない"
+    },
+    {
+      "claim": "フォント定義 (--font-sans, --font-mono)",
+      "reason": "原文書にフォント定義の記述はない"
+    },
+    {
+      "claim": "bodyのレイアウト (行間1.7、最大幅880px、padding 2rem 1.5rem)",
+      "reason": "原文書にbodyスタイルの記述はない"
+    },
+    {
+      "claim": "見出しh1〜h4のスタイル (margin-top 1.8em等)",
+      "reason": "原文書に見出しスタイルの記述はない"
+    },
+    {
+      "claim": "p, liの縦マージン0.4em、ul, olの左padding 1.4em",
+      "reason": "原文書にpararaph/listスタイルの記述はない"
+    },
+    {
+      "claim": "codeのスタイル (monoフォント、surface背景、角丸3px等)",
+      "reason": "原文書にcodeスタイルの記述はない"
+    },
+    {
+      "claim": "preのスタイル (角丸6px、padding 1em等)",
+      "reason": "原文書にpreスタイルの記述はない"
+    },
+    {
+      "claim": "tableのスタイル (罫線結合、幅100%等)",
+      "reason": "原文書にtableスタイル記述はない"
+    },
+    {
+      "claim": "th, tdのスタイル (1pxボーダー、padding 0.6em 0.8em等)",
+      "reason": "原文書にth/tdスタイル記述はない"
+    },
+    {
+      "claim": "thはbg背景、font-weight 600",
+      "reason": "原文書にthスタイル記述はない"
+    },
+    {
+      "claim": "dl, dt, ddのスタイル",
+      "reason": "原文書に定義リストスタイル記述はない"
+    },
+    {
+      "claim": "details, summaryのスタイル",
+      "reason": "原文書にdetails/summaryスタイル記述はない"
+    },
+    {
+      "claim": "sectionのmargin-bottom 1.5rem",
+      "reason": "原文書にsectionスタイル記述はない"
+    },
+    {
+      "claim": "asideのスタイル (左4pxアクセントボーダー等)",
+      "reason": "原文書にasideスタイル記述はない"
+    },
+    {
+      "claim": "figure/figcaption/.diagramのスタイル",
+      "reason": "原文書にfigure系スタイル記述はない"
+    },
+    {
+      "claim": ".badgeの基本スタイル (ピル形状、padding 0.1em 0.6em等)",
+      "reason": "原文書にbadgeスタイル記述はない"
+    },
+    {
+      "claim": "バッジのカテゴリ別配色 (security #ffe4e8等)",
+      "reason": "原文書にバッジ配色記述はない"
+    },
+    {
+      "claim": ".cards/.cardのグリッドスタイル",
+      "reason": "原文書にカードスタイル記述はない"
+    },
+    {
+      "claim": "[data-req-id]のscroll-margin-top 1em",
+      "reason": "原文書にdata-req-id属性記述はない"
+    },
+    {
+      "claim": "レスポンシブ @media (max-width: 640px)の指定",
+      "reason": "原文書にメディアクエリ記述はない"
+    },
+    {
+      "claim": "各<section>はaria-labelledbyで見出しと関連付け (overview-heading等)",
+      "reason": "原文書にaria-labelledby記述はない"
+    },
+    {
+      "claim": "SVGはrole=\"img\"とaria-labelを持つ",
+      "reason": "原文書にSVGアクセシビリティ属性記述はない"
+    },
+    {
+      "claim": "<figure>はaria-labelledby=\"presence-fig-caption\"を持つ",
+      "reason": "原文書にfigure属性記述はない"
+    },
+    {
+      "claim": "各表に<caption>、<th scope=\"col\">、<th scope=\"row\">を使用",
+      "reason": "原文書に表のアクセシビリティ属性記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 100,
+    "format": "html",
+    "trial": 5,
+    "faithful_count": 0,
+    "hallucination_count": 38
+  }
+}

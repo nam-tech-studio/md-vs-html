@@ -1,0 +1,97 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "文書タイトルは「チャットツール「Linkr」要件定義書 (Core)」である",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Core)"
+    },
+    {
+      "claim": "Linkrは本チャットツールの名称である",
+      "evidence_in_source": "チャットツール「Linkr」要件定義書"
+    },
+    {
+      "claim": "社内コミュニケーション用のチャットツールである",
+      "evidence_in_source": "社内コミュニケーション用のチャットツール"
+    },
+    {
+      "claim": "本書はコア機能のみを定義する",
+      "evidence_in_source": "本書はコア機能のみを定義する"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "言語は日本語 (<html lang=\"ja\">) である",
+      "reason": "原文書はMarkdownでありHTML lang属性の記述はない"
+    },
+    {
+      "claim": "文字コードはUTF-8である",
+      "reason": "原文書に文字コード指定の記述はない"
+    },
+    {
+      "claim": "ビューポートは width=device-width, initial-scale=1.0 である",
+      "reason": "原文書にviewport指定の記述はない"
+    },
+    {
+      "claim": "外部スタイルシートは ./styles.css である",
+      "reason": "原文書にスタイルシート指定の記述はない"
+    },
+    {
+      "claim": "機能要件には data-category=\"functional\" が付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "SVGダイアグラムが aria-label=\"ユーザー・ワークスペース・サブドメインの関係図\" を持つ",
+      "reason": "原文書にSVG/aria-labelの記述はない"
+    },
+    {
+      "claim": "図のタイトルは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」である",
+      "reason": "原文書に図やタイトルの記述はない"
+    },
+    {
+      "claim": "図の構成要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」のボックスがある",
+      "reason": "原文書に図のボックス構成の記述はない"
+    },
+    {
+      "claim": "ユーザーから2つのワークスペースに線が引かれ、各ワークスペースからサブドメイン要素に線が結ばれる",
+      "reason": "原文書に図の線の構造の記述はない"
+    },
+    {
+      "claim": "figcapcionは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」である",
+      "reason": "原文書にfigcaptionの記述はない"
+    },
+    {
+      "claim": "表キャプション「チャネル種別と閲覧・参加範囲」が存在する",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "警告は data-category=\"warning\" で示される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "セキュリティ要件は data-category=\"security\" で示される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "非機能要件は data-category=\"nfr\" で示される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "表キャプション「非機能要件一覧」が存在する",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "技術スタック制約は data-category=\"tech\" で示される",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "技術スタックは定義リスト形式で記述される",
+      "reason": "原文書では箇条書きで記述されており定義リスト形式ではない"
+    }
+  ],
+  "_meta": {
+    "length": 50,
+    "format": "html",
+    "trial": 1,
+    "faithful_count": 4,
+    "hallucination_count": 17
+  }
+}

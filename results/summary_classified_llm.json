@@ -1,0 +1,117 @@
+[
+  {
+    "length": 50,
+    "format": "html",
+    "trials": 5,
+    "structural_meta_observations_mean": 18.2,
+    "business_hallucinations_mean": 3.4,
+    "business_hallucination_rate_mean": 0.06971735502711723,
+    "business_hallucination_rate_sd": 0.06008117845843855,
+    "business_hallucination_examples": [
+      "図のタイトルは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」である",
+      "図の構成要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」のボックスがある",
+      "ユーザーから2つのワークスペースに線が引かれ、各ワークスペースからサブドメイン要素に線が結ばれる",
+      "figcapcionは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」である",
+      "表キャプション「チャネル種別と閲覧・参加範囲」が存在する",
+      "図のラベルは「ユーザー・ワークスペース・サブドメインの関係図」",
+      "図のタイトルテキストは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」",
+      "図中の要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」が存在する"
+    ]
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trials": 5,
+    "structural_meta_observations_mean": 0.4,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trials": 5,
+    "structural_meta_observations_mean": 20.2,
+    "business_hallucinations_mean": 2.2,
+    "business_hallucination_rate_mean": 0.029678362573099415,
+    "business_hallucination_rate_sd": 0.02944953991114426,
+    "business_hallucination_examples": [
+      "図キャプション「プレゼンス状態(オンライン / 退席中 / オフライン)と『10分間無操作で退席中』の自動遷移」が付与されている",
+      "data-category の分類値として user/workspace/presence/channel/message/mention/dm/security/search/notification/nfr/tech/warning が存在する",
+      "文書タイトルは「チャットツール「Linkr」要件定義書 (Standard)」である",
+      "オンライン→退席中の矢印は実線で「10分無操作」のラベルが付く",
+      "図のキャプションは「プレゼンス状態 (オンライン / 退席中 / オフライン) と「10分間無操作で退席中」の自動遷移」",
+      "data-categoryの値にuser, workspace, presence, channel, message, mention, dm, search, notification, nfr, tech, security, warningが含まれる",
+      "表 (<table>) は5つあり、チャネル種別・検索フィルタ・通知レベル・非機能要件・データストアの一覧である",
+      "「オンライン → 退席中」への遷移ラベルは「10分無操作」(実線矢印)"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trials": 5,
+    "structural_meta_observations_mean": 0,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trials": 5,
+    "structural_meta_observations_mean": 2.2,
+    "business_hallucinations_mean": 1.8,
+    "business_hallucination_rate_mean": 0.011028621332443233,
+    "business_hallucination_rate_sd": 0.004587569566208699,
+    "business_hallucination_examples": [
+      "プレゼンス状態遷移図 (オンライン → 退席中 → オフライン、10分無操作で遷移) が記載されている",
+      "ロール階層は「オーナー > 管理者 > メンバー」の図がある",
+      "図: プレゼンス状態遷移図 (オンライン → 退席中 → オフライン、10分無操作で退席中へ遷移)",
+      "図: ロール階層 (オーナー > 管理者 > メンバー)",
+      "プレゼンス状態遷移図 (SVG) が含まれる",
+      "ロール階層図 (SVG): オーナー > 管理者 > メンバー",
+      "図 (SVG): プレゼンス状態遷移図、ロール階層図 の2点を含む",
+      "第2章と第3章にSVG図表 (プレゼンス状態遷移図、ロール階層図) が含まれる"
+    ]
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trials": 5,
+    "structural_meta_observations_mean": 0,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trials": 5,
+    "structural_meta_observations_mean": 2.2,
+    "business_hallucinations_mean": 1,
+    "business_hallucination_rate_mean": 0.0032658588434928983,
+    "business_hallucination_rate_sd": 0.0029182189641958254,
+    "business_hallucination_examples": [
+      "ロール階層図(SVG): オーナー > 管理者 > メンバー、別ロールとしてゲスト(特定チャネルのみ)",
+      "ワークフロー構造図(SVG): トリガー → ステップ → アクション",
+      "ロール階層図としてオーナー > 管理者 > メンバー、別ロールとしてゲストが図示されている",
+      "セクション4にロール階層図(オーナー>管理者>メンバー、別ロールとしてゲスト)がインラインSVGで埋め込まれている",
+      "セクション17にワークフロー構造図(トリガー→ステップ→アクション)がインラインSVGで埋め込まれている"
+    ]
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trials": 5,
+    "structural_meta_observations_mean": 0.2,
+    "business_hallucinations_mean": 0.2,
+    "business_hallucination_rate_mean": 0.0006557377049180328,
+    "business_hallucination_rate_sd": 0.0013114754098360656,
+    "business_hallucination_examples": [
+      "欠番 (35番台以降や、章を入れ替える根拠) は本書には書かれていない"
+    ]
+  }
+]

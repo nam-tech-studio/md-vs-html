@@ -1,0 +1,116 @@
+{
+  "faithful_extras": [],
+  "hallucinations": [
+    {
+      "claim": "文書タイトルは「チャットツール「Linkr」要件定義書 (Core)」である",
+      "reason": "原文書(Markdown)には文書タイトル要素としての記載はなく、H1見出しは存在するが「文書タイトル」という属性付与の記述はない"
+    },
+    {
+      "claim": "言語はja (html lang=ja) である",
+      "reason": "原文書(Markdown)にはHTML lang属性の記述はない"
+    },
+    {
+      "claim": "文字コードはUTF-8である",
+      "reason": "原文書に文字コードの明示記述はない"
+    },
+    {
+      "claim": "ビューポートは width=device-width, initial-scale=1.0 である",
+      "reason": "原文書にビューポート指定の記述はない"
+    },
+    {
+      "claim": "外部スタイルシート ./styles.css を参照している",
+      "reason": "原文書にスタイルシート参照の記述はない"
+    },
+    {
+      "claim": "文書冒頭にh1見出しがある",
+      "reason": "原文書はMarkdownであり、h1要素という記述はない"
+    },
+    {
+      "claim": "機能要件には data-category=\"functional\" 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "図(SVG figure.diagram)が存在する",
+      "reason": "原文書に図やSVGの記述はない"
+    },
+    {
+      "claim": "図のaria-labelは「ユーザー・ワークスペース・サブドメインの関係図」である",
+      "reason": "原文書に図やaria-labelの記述はない"
+    },
+    {
+      "claim": "図のtitleは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」である",
+      "reason": "原文書に図のtitle記述はない"
+    },
+    {
+      "claim": "図示要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」と結ぶ線がある",
+      "reason": "原文書に図示要素の記述はない"
+    },
+    {
+      "claim": "figcaptionは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」である",
+      "reason": "原文書にfigcaptionの記述はない"
+    },
+    {
+      "claim": "表のキャプションは「チャネル種別と閲覧・参加範囲」である",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "警告は data-category=\"warning\" で付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "セキュリティ要件は data-category=\"security\" で付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "非機能要件の表のキャプションは「非機能要件一覧」である",
+      "reason": "原文書に表キャプションの記述はない"
+    },
+    {
+      "claim": "非機能要件の表は全行 data-category=\"nfr\" である",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "技術スタック制約は定義リスト(dl)で記述されている",
+      "reason": "原文書はMarkdownの箇条書きであり、dlの記述はない"
+    },
+    {
+      "claim": "技術スタック制約は全項目 data-category=\"tech\" である",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "各セクションは <section> で囲まれ aria-labelledby で見出しと関連付けられている",
+      "reason": "原文書にsection要素やaria-labelledbyの記述はない"
+    },
+    {
+      "claim": "セクションid は overview, users-workspace, channels, messages, dm, nfr, tech-stack である",
+      "reason": "原文書にセクションidの記述はない"
+    },
+    {
+      "claim": "図には role=\"img\"、aria-labelledby、<title> が付与されている",
+      "reason": "原文書に図やそれらの属性の記述はない"
+    },
+    {
+      "claim": "styles.css の冒頭コメントは「Linkr 要件定義書 共通スタイル」である",
+      "reason": "原文書にstyles.cssの内容記述はない"
+    },
+    {
+      "claim": "styles.css にCSS変数 --c-security, --c-tech, --c-nfr, --c-warn が定義されている",
+      "reason": "原文書にCSS変数の記述はない"
+    },
+    {
+      "claim": "styles.css に .badge[data-category=...] のスタイルが含まれる",
+      "reason": "原文書にbadgeスタイルの記述はない"
+    },
+    {
+      "claim": "styles.css に figure.diagram, .cards/.card, [data-req-id], @media (max-width: 640px) の指定が含まれる",
+      "reason": "原文書にこれらの記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 50,
+    "format": "html",
+    "trial": 5,
+    "faithful_count": 0,
+    "hallucination_count": 26
+  }
+}

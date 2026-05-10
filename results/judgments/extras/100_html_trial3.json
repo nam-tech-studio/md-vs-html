@@ -1,0 +1,93 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "本書はコア機能とコミュニケーション支援機能を定義する",
+      "evidence_in_source": "本書はコア機能とコミュニケーション支援機能を定義する"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "文書タイトルは「チャットツール「Linkr」要件定義書 (Standard)」である",
+      "reason": "原文書はMarkdownの見出しでありHTMLの<title>要素は存在しない"
+    },
+    {
+      "claim": "言語は日本語 (<html lang=\"ja\">) である",
+      "reason": "原文書はMarkdownでありHTML属性の記述はない"
+    },
+    {
+      "claim": "文字コードはUTF-8である",
+      "reason": "原文書に文字コードの明示的記述はない"
+    },
+    {
+      "claim": "ビューポートはwidth=device-width, initial-scale=1.0である",
+      "reason": "原文書にビューポート指定の記述はない"
+    },
+    {
+      "claim": "スタイルシート ./styles.css を読み込む",
+      "reason": "原文書にスタイルシート参照の記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図がSVGで描画されている",
+      "reason": "原文書に図やSVGの記述は一切ない"
+    },
+    {
+      "claim": "オンライン状態は緑系 (#e6f4ea塗り、#34a853枠) で図示される",
+      "reason": "原文書に色指定や図の記述はない"
+    },
+    {
+      "claim": "退席中状態は黄系 (#fef7e0塗り、#fbbc04枠) で図示される",
+      "reason": "原文書に色指定や図の記述はない"
+    },
+    {
+      "claim": "オフライン状態は灰系 (#f1f3f4塗り、#9aa0a6枠) で図示される",
+      "reason": "原文書に色指定や図の記述はない"
+    },
+    {
+      "claim": "オンライン→退席中の矢印は実線で「10分無操作」のラベルが付く",
+      "reason": "原文書に矢印やラベルの記述はない"
+    },
+    {
+      "claim": "退席中→オフラインの矢印は破線 (stroke-dasharray=\"4 3\") である",
+      "reason": "原文書に矢印や破線指定の記述はない"
+    },
+    {
+      "claim": "図のキャプションは「プレゼンス状態 (オンライン / 退席中 / オフライン) と「10分間無操作で退席中」の自動遷移」",
+      "reason": "原文書にキャプションの記述はない"
+    },
+    {
+      "claim": "全11セクション (<section>) で構成される",
+      "reason": "原文書はMarkdownでありHTML要素の構造記述はない"
+    },
+    {
+      "claim": "各セクションはaria-labelledbyで見出しと関連付けられている",
+      "reason": "原文書にARIA属性の記述はない"
+    },
+    {
+      "claim": "各要件項目にdata-category属性が付与されている",
+      "reason": "原文書にdata-category属性の記述はない"
+    },
+    {
+      "claim": "data-categoryの値にuser, workspace, presence, channel, message, mention, dm, search, notification, nfr, tech, security, warningが含まれる",
+      "reason": "原文書にdata-category属性値の記述はない"
+    },
+    {
+      "claim": "表 (<table>) は5つあり、チャネル種別・検索フィルタ・通知レベル・非機能要件・データストアの一覧である",
+      "reason": "原文書はMarkdown箇条書き中心で表要素の数や構成記述はない"
+    },
+    {
+      "claim": "定義リスト (<dl>) で特殊メンション・アプリケーション層・通信インフラ運用が記述される",
+      "reason": "原文書に<dl>定義リストの記述はない"
+    },
+    {
+      "claim": "図 (<figure>) でプレゼンス状態遷移図がrole=\"img\"、aria-label=\"プレゼンス状態遷移図\"として描画される",
+      "reason": "原文書に<figure>要素やARIA属性の記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 100,
+    "format": "html",
+    "trial": 3,
+    "faithful_count": 1,
+    "hallucination_count": 19
+  }
+}

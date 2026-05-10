@@ -1,0 +1,93 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "ドキュメントタイトルは「チャットツール『Linkr』要件定義書 (Core)」",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Core)"
+    },
+    {
+      "claim": "セクションは7つ存在する",
+      "evidence_in_source": "## 1〜## 7 の7セクション"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "言語属性は lang=\"ja\"",
+      "reason": "原文書(Markdown)にHTML言語属性の記述なし"
+    },
+    {
+      "claim": "メタ情報に charset=UTF-8 が指定されている",
+      "reason": "原文書にcharset指定の記述なし"
+    },
+    {
+      "claim": "viewport=width=device-width, initial-scale=1.0 が指定されている",
+      "reason": "原文書にviewport指定の記述なし"
+    },
+    {
+      "claim": "外部スタイルシート ./styles.css を参照している",
+      "reason": "原文書にスタイルシート参照の記述なし"
+    },
+    {
+      "claim": "機能要件には data-category=\"functional\" 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述なし"
+    },
+    {
+      "claim": "図(SVG diagram)が存在する",
+      "reason": "原文書に図やSVGの記述なし"
+    },
+    {
+      "claim": "図のラベルは「ユーザー・ワークスペース・サブドメインの関係図」",
+      "reason": "原文書に図のラベル記述なし"
+    },
+    {
+      "claim": "図のタイトルテキストは「ユーザーは複数ワークスペースに所属し、ワークスペースはサブドメインで識別される」",
+      "reason": "原文書に図のタイトル記述なし"
+    },
+    {
+      "claim": "図中の要素として「ユーザー」「ワークスペースA」「ワークスペースB」「acme.linkr.app」「サブドメイン」が存在する",
+      "reason": "原文書に図の構成要素の記述なし"
+    },
+    {
+      "claim": "図のキャプションは「ユーザーと複数ワークスペースの所属関係 (サブドメインで識別)」",
+      "reason": "原文書に図のキャプション記述なし"
+    },
+    {
+      "claim": "チャネル種別は表「チャネル種別と閲覧・参加範囲」として記述されている",
+      "reason": "原文書では箇条書きで記述されており表のタイトルは存在しない"
+    },
+    {
+      "claim": "警告に data-category=\"warning\" 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述なし"
+    },
+    {
+      "claim": "セキュリティ要件に data-category=\"security\" 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述なし"
+    },
+    {
+      "claim": "非機能要件は表「非機能要件一覧」として記述されている",
+      "reason": "原文書では箇条書きで記述されており表のタイトルは存在しない"
+    },
+    {
+      "claim": "非機能要件の全行に data-category=\"nfr\" 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述なし"
+    },
+    {
+      "claim": "技術スタック制約に data-category=\"tech\" 属性が付与されている",
+      "reason": "原文書にdata-category属性の記述なし"
+    },
+    {
+      "claim": "各セクションは id 属性を持つ (overview, users-workspace, channels, messages, dm, nfr, tech-stack)",
+      "reason": "原文書にid属性の記述なし"
+    },
+    {
+      "claim": "各セクションは aria-labelledby 属性を持つ",
+      "reason": "原文書にaria-labelledby属性の記述なし"
+    }
+  ],
+  "_meta": {
+    "length": 50,
+    "format": "html",
+    "trial": 2,
+    "faithful_count": 2,
+    "hallucination_count": 18
+  }
+}

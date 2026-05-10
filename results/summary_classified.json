@@ -1,0 +1,107 @@
+[
+  {
+    "length": 50,
+    "format": "html",
+    "trials": 5,
+    "total_hallucinations_mean": 21.6,
+    "structural_meta_mean": 20,
+    "business_hallucinations_mean": 1.6,
+    "business_hallucination_rate_mean": 0.03627202255109232,
+    "business_hallucination_rate_sd": 0.022856607374524888,
+    "business_hallucination_examples": [
+      "各セクションは id 属性を持つ (overview, users-workspace, channels, messages, dm, nfr, tech-stack)",
+      "HTML言語属性はlang=\"ja\"である",
+      "section idはoverview/users-workspace/channels/messages/dm/nfr/tech-stackである",
+      "section idは overview, users-workspace, channels, messages, dm, nfr, tech-stack である",
+      "出現するカテゴリは functional, warning, security, nfr, tech の5種類"
+    ]
+  },
+  {
+    "length": 50,
+    "format": "md",
+    "trials": 5,
+    "total_hallucinations_mean": 0.4,
+    "structural_meta_mean": 0,
+    "business_hallucinations_mean": 0.4,
+    "business_hallucination_rate_mean": 0.00909560723514212,
+    "business_hallucination_rate_sd": 0.011144592305268446,
+    "business_hallucination_examples": [
+      "要件定義書は全55行・7章構成である",
+      "requirements.mdは全55行である"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "html",
+    "trials": 5,
+    "total_hallucinations_mean": 22.4,
+    "structural_meta_mean": 20.2,
+    "business_hallucinations_mean": 2.2,
+    "business_hallucination_rate_mean": 0.02813335710465324,
+    "business_hallucination_rate_sd": 0.04952578652414965,
+    "business_hallucination_examples": [
+      "ビューポート設定がある",
+      "ドキュメントタイトルは「チャットツール「Linkr」要件定義書 (Standard)」",
+      "p, liの縦マージン0.4em、ul, olの左padding 1.4em",
+      "preのスタイル (角丸6px、padding 1em等)",
+      "tableのスタイル (罫線結合、幅100%等)"
+    ]
+  },
+  {
+    "length": 100,
+    "format": "md",
+    "trials": 5,
+    "total_hallucinations_mean": 0,
+    "structural_meta_mean": 0,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 250,
+    "format": "html",
+    "trials": 5,
+    "total_hallucinations_mean": 4,
+    "structural_meta_mean": 4,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 250,
+    "format": "md",
+    "trials": 5,
+    "total_hallucinations_mean": 0,
+    "structural_meta_mean": 0,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 500,
+    "format": "html",
+    "trials": 5,
+    "total_hallucinations_mean": 3.2,
+    "structural_meta_mean": 3.2,
+    "business_hallucinations_mean": 0,
+    "business_hallucination_rate_mean": 0.0,
+    "business_hallucination_rate_sd": 0.0,
+    "business_hallucination_examples": []
+  },
+  {
+    "length": 500,
+    "format": "md",
+    "trials": 5,
+    "total_hallucinations_mean": 0.4,
+    "structural_meta_mean": 0.2,
+    "business_hallucinations_mean": 0.2,
+    "business_hallucination_rate_mean": 0.0006557377049180328,
+    "business_hallucination_rate_sd": 0.0013114754098360656,
+    "business_hallucination_examples": [
+      "欠番 (35番台以降や、章を入れ替える根拠) は本書には書かれていない"
+    ]
+  }
+]

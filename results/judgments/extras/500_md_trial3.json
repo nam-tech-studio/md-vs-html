@@ -1,0 +1,21 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "章番号は原文どおり23の次に33・34が来てから24に戻る順序になっている",
+      "evidence_in_source": "## 23. モバイルアプリ ... ## 33. ヘルプとサポート ... ## 34. 利用規約 ... ## 24. アクセシビリティ"
+    }
+  ],
+  "hallucinations": [
+    {
+      "claim": "欠番 (35番台以降や、章を入れ替える根拠) は本書には書かれていない",
+      "reason": "原文書には章順序や欠番についてのメタ的な記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 500,
+    "format": "md",
+    "trial": 3,
+    "faithful_count": 1,
+    "hallucination_count": 1
+  }
+}

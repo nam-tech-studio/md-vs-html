@@ -1,0 +1,68 @@
+{
+  "faithful_extras": [],
+  "hallucinations": [
+    {
+      "claim": "文書タイトルは「チャットツール「Linkr」要件定義書 (Standard)」である",
+      "reason": "原文書はMarkdownでありHTMLメタ情報の記述はない"
+    },
+    {
+      "claim": "言語はja (html lang=\"ja\")",
+      "reason": "原文書にHTML lang属性の記述はない"
+    },
+    {
+      "claim": "文字コードはUTF-8",
+      "reason": "原文書に文字コードの明示記述はない"
+    },
+    {
+      "claim": "viewportはwidth=device-width, initial-scale=1.0",
+      "reason": "原文書にviewport指定の記述はない"
+    },
+    {
+      "claim": "関連スタイルシートは./styles.css",
+      "reason": "原文書にスタイルシートの参照記述はない"
+    },
+    {
+      "claim": "プレゼンス状態遷移図がSVG figureとして存在する",
+      "reason": "原文書にSVG figureや状態遷移図の記述はない"
+    },
+    {
+      "claim": "「オンライン → 退席中」への遷移ラベルは「10分無操作」(実線矢印)",
+      "reason": "原文書に矢印表現の記述はない"
+    },
+    {
+      "claim": "「退席中 → オフライン」への遷移は破線矢印 (stroke-dasharray=\"4 3\") で表現",
+      "reason": "原文書にSVG属性や破線矢印の記述はない"
+    },
+    {
+      "claim": "figcaptionは「プレゼンス状態 (オンライン / 退席中 / オフライン) と「10分間無操作で退席中」の自動遷移」",
+      "reason": "原文書にfigcaptionの記述はない"
+    },
+    {
+      "claim": "原文中の各項目にdata-category属性によるカテゴリタグ (user, workspace, presence, channel, warning, message, mention, dm, security, search, notification, nfr, tech) が付与されている",
+      "reason": "原文書はMarkdownでありdata-category属性の記述はない"
+    },
+    {
+      "claim": "ファイル名はrequirements.html である",
+      "reason": "原文書にファイル名の言及はない"
+    },
+    {
+      "claim": "同ディレクトリにstyles.css が存在し表示用スタイルである",
+      "reason": "原文書にstyles.cssへの言及はない"
+    },
+    {
+      "claim": "エッジケースは warning として表現されている",
+      "reason": "原文書にwarningラベル等のマーキング記述はない"
+    },
+    {
+      "claim": "DMの送信者・受信者制限は security として表現されている",
+      "reason": "原文書にsecurityラベル等のマーキング記述はない"
+    }
+  ],
+  "_meta": {
+    "length": 100,
+    "format": "html",
+    "trial": 4,
+    "faithful_count": 0,
+    "hallucination_count": 14
+  }
+}

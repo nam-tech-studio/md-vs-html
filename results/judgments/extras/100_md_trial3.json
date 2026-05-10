@@ -1,0 +1,20 @@
+{
+  "faithful_extras": [
+    {
+      "claim": "本書のタイトルは「チャットツール『Linkr』要件定義書 (Standard)」である",
+      "evidence_in_source": "# チャットツール「Linkr」要件定義書 (Standard)"
+    },
+    {
+      "claim": "本書は全11章で構成される",
+      "evidence_in_source": "## 1.〜## 11. の章立て"
+    }
+  ],
+  "hallucinations": [],
+  "_meta": {
+    "length": 100,
+    "format": "md",
+    "trial": 3,
+    "faithful_count": 2,
+    "hallucination_count": 0
+  }
+}
